@@ -1,0 +1,58 @@
+2026-11-10T18:29:15Z
+soup-tracker-verification-app-1 CPU=0.33% memory=39.21MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=0.00% memory=60.05MiB / 5.786GiB
+2026-11-10T18:29:19Z
+soup-tracker-verification-app-1 CPU=0.26% memory=39.21MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=4.93% memory=60.1MiB / 5.786GiB
+2026-11-10T18:29:25Z
+soup-tracker-verification-app-1 CPU=0.34% memory=39.21MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=0.69% memory=62.19MiB / 5.786GiB
+2026-11-10T18:29:30Z
+soup-tracker-verification-app-1 CPU=0.25% memory=39.21MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=0.20% memory=62.28MiB / 5.786GiB
+2026-11-10T18:29:36Z
+soup-tracker-verification-app-1 CPU=0.83% memory=39.3MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=7.87% memory=60.24MiB / 5.786GiB
+2026-11-10T18:29:41Z
+soup-tracker-verification-app-1 CPU=74.75% memory=44.7MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=36.06% memory=94.46MiB / 5.786GiB
+2026-11-10T18:29:47Z
+soup-tracker-verification-app-1 CPU=50.20% memory=44.65MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=28.23% memory=96.47MiB / 5.786GiB
+2026-11-10T18:29:50Z
+soup-tracker-verification-app-1 CPU=49.20% memory=44.65MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=27.81% memory=96.76MiB / 5.786GiB
+2026-11-10T18:29:55Z
+soup-tracker-verification-app-1 CPU=52.60% memory=44.64MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=25.68% memory=97.04MiB / 5.786GiB
+2026-11-10T18:30:01Z
+soup-tracker-verification-app-1 CPU=60.58% memory=44.92MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=24.58% memory=98.89MiB / 5.786GiB
+2026-11-10T18:30:06Z
+soup-tracker-verification-app-1 CPU=53.46% memory=44.66MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=24.84% memory=100.2MiB / 5.786GiB
+2026-11-10T18:30:12Z
+soup-tracker-verification-app-1 CPU=56.42% memory=44.9MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=23.30% memory=98.76MiB / 5.786GiB
+2026-11-10T18:30:17Z
+soup-tracker-verification-app-1 CPU=59.58% memory=44.66MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=22.00% memory=99.12MiB / 5.786GiB
+2026-11-10T18:30:21Z
+soup-tracker-verification-app-1 CPU=47.09% memory=44.66MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=21.35% memory=100.1MiB / 5.786GiB
+2026-11-10T18:30:27Z
+soup-tracker-verification-app-1 CPU=53.31% memory=44.66MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=20.13% memory=100.6MiB / 5.786GiB
+2026-11-10T18:30:32Z
+soup-tracker-verification-app-1 CPU=63.30% memory=44.66MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=19.53% memory=102MiB / 5.786GiB
+2026-11-10T18:30:38Z
+soup-tracker-verification-app-1 CPU=66.70% memory=44.66MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=26.34% memory=102.8MiB / 5.786GiB
+2026-11-10T18:30:43Z
+soup-tracker-verification-app-1 CPU=57.45% memory=44.65MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=22.93% memory=102.9MiB / 5.786GiB
+2026-11-10T18:30:49Z
+soup-tracker-verification-app-1 CPU=48.80% memory=44.62MiB / 5.786GiB
+soup-tracker-verification-db-1 CPU=20.72% memory=103.7MiB / 5.786GiB
+2026-11-10T18:30:53Z

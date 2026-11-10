@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: soup
+      POSTGRES_PASSWORD: local-compose-only
+      POSTGRES_DB: soup
+    volumes:
+      - tracker-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "soup", "-d", "soup"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+  app:
+    build:
+      context: .
+      target: runtime
+    environment:
+      DATABASE_URL: postgresql://soup:local-compose-only@db:5432/soup
+      SESSION_SECRET_FILE: /state/session-secret
+      SOUP_LOG_POST_TIMINGS: "${SOUP_LOG_POST_TIMINGS:-0}"
+    volumes:
+      - tracker-state:/state
+    ports:
+      - "127.0.0.1:${TRACKER_PORT:-8000}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2)"]
+      interval: 3s
+      timeout: 3s
+      retries: 15
+
+  test:
+    profiles: ["test"]
+    build:
+      context: .
+      target: test
+    environment:
+      DATABASE_URL: postgresql://soup:local-compose-only@db:5432/soup_tests
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  tracker-data:
+  tracker-state:

@@ -1,0 +1,2 @@
+PASS native reconnect with Last-Event-ID=1 replays two stored metrics and displays all three in step order
+PASS HTTP 502 then fresh EventSource after=1 replays two stored metrics and displays all three in step order

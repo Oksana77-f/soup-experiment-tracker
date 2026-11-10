@@ -1,0 +1,48 @@
+:root {
+  font: 16px/1.5 system-ui, sans-serif;
+  color: #19252a;
+  background: #f2f5f3;
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.suspended #root { visibility: hidden; }
+a { color: #125245; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #3a7668; outline-offset: 3px; }
+header { background: #fff; border-bottom: 1px solid #dce5df; }
+.shell { width: min(100% - 32px, 1000px); margin-inline: auto; }
+.toolbar, .account, .heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.toolbar { min-height: 64px; flex-wrap: wrap; padding-block: 10px; }
+.brand { font-weight: 760; text-decoration: none; }
+.brand span, .muted { color: #4c6059; }
+.brand span { margin-inline-start: 0.5rem; font-weight: 540; }
+main { padding-block: 42px; }
+h1, h2, p { margin: 0 0 0.75rem; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.18; }
+h2 { font-size: 1.25rem; }
+.eyebrow { color: #43625a; font-size: .78rem; font-weight: 720; letter-spacing: .065em; text-transform: uppercase; }
+.panel, .runs a { background: #fff; border: 1px solid #dce5df; border-radius: 10px; }
+.panel { padding: 24px; }
+.login { max-width: 440px; margin: 18px auto; }
+form { display: grid; gap: 8px; margin-top: 20px; }
+label { font-weight: 650; }
+input, button { font: inherit; border-radius: 6px; padding: 8px 12px; }
+input { border: 1px solid #68827b; min-width: 0; }
+button { border: 1px solid #125245; color: #fff; background: #125245; cursor: pointer; }
+button:disabled { opacity: .65; cursor: progress; }
+.quiet { background: #fff; color: #125245; }
+.error { color: #951e26; margin-block: 12px; }
+.runs { margin: 24px 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.runs a { display: flex; justify-content: space-between; padding: 14px 18px; font-weight: 620; }
+.back { display: inline-block; margin-bottom: 24px; }
+.heading { margin-bottom: 10px; }
+.status { font-size: .88rem; font-weight: 650; border-radius: 16px; padding: 4px 10px; background: #eceeea; }
+.status.live { color: #174f35; background: #d9f0e0; }
+.status.offline, .status.reconnecting { color: #72380b; background: #f9ebd9; }
+.table-scroll { overflow: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+td, th { padding: 8px; text-align: left; border-bottom: 1px solid #e2eae4; }
+@media (max-width: 520px) {
+  .panel { padding: 16px; }
+  .account { font-size: .85rem; }
+}

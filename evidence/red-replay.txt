@@ -1,0 +1,35 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.7.0 -- /mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/soup-linux-venv/bin/python
+cachedir: .pytest_cache
+rootdir: /mnt/c/Users/Оксана/Desktop/Soup Experiment Tracker
+configfile: pytest.ini
+plugins: anyio-4.16.0, asyncio-1.3.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+tests/test_stream.py::test_browser_matches_input_and_database_after_disconnect[native-reconnect] FAILED [100%]
+
+=================================== FAILURES ===================================
+__ test_browser_matches_input_and_database_after_disconnect[native-reconnect] __
+tests/test_stream.py:108: in test_browser_matches_input_and_database_after_disconnect
+    await expect(rows).to_have_count(3, timeout=5000)
+E   AssertionError: Locator expected to have count '3'
+E   Actual value: 1 
+E   Call log:
+E     - Expect "to_have_count" with timeout 5000ms
+E     - waiting for get_by_test_id("metric-row")
+E       9 × locator resolved to 1 element
+E         - unexpected value "1"
+------------------------------ Captured log call -------------------------------
+WARNING  psycopg:connection_async.py:191 error ignored in rollback on <psycopg.AsyncConnection [ACTIVE] (host=172.22.0.2 user=soup database=soup_tests) at 0x78c3448e9c70>: sending query failed: another command is already in progress
+WARNING  psycopg.pool:pool_async.py:897 closing returned connection: <psycopg.AsyncConnection [ACTIVE] (host=172.22.0.2 user=soup database=soup_tests) at 0x78c3448e9c70>
+WARNING  psycopg.pool:pool_async.py:810 discarding closed connection: <psycopg.AsyncConnection [BAD] at 0x78c3448e9c70>
+=========================== short test summary info ============================
+FAILED tests/test_stream.py::test_browser_matches_input_and_database_after_disconnect[native-reconnect] - AssertionError: Locator expected to have count '3'
+Actual value: 1 
+Call log:
+  - Expect "to_have_count" with timeout 5000ms
+  - waiting for get_by_test_id("metric-row")
+    9 × locator resolved to 1 element
+      - unexpected value "1"
+============================== 1 failed in 30.50s ==============================

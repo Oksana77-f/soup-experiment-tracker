@@ -1,0 +1,48 @@
+2026-11-10T18:58:17Z
+soup-tracker-step12-app-1 CPU=0.11% memory=45.49MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=0.03% memory=57.09MiB / 5.786GiB
+2026-11-10T18:58:22Z
+soup-tracker-step12-app-1 CPU=0.12% memory=56.21MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=0.02% memory=57.65MiB / 5.786GiB
+2026-11-10T18:58:28Z
+soup-tracker-step12-app-1 CPU=0.11% memory=56.45MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=3.22% memory=57.68MiB / 5.786GiB
+2026-11-10T18:58:33Z
+soup-tracker-step12-app-1 CPU=0.12% memory=56.54MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=2.74% memory=57.7MiB / 5.786GiB
+2026-11-10T18:58:39Z
+soup-tracker-step12-app-1 CPU=37.03% memory=63.68MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=20.33% memory=92.42MiB / 5.786GiB
+2026-11-10T18:58:45Z
+soup-tracker-step12-app-1 CPU=34.18% memory=63.86MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=14.04% memory=94.6MiB / 5.786GiB
+2026-11-10T18:58:49Z
+soup-tracker-step12-app-1 CPU=34.61% memory=64.06MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=15.19% memory=95.37MiB / 5.786GiB
+2026-11-10T18:58:55Z
+soup-tracker-step12-app-1 CPU=31.95% memory=64.24MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=15.01% memory=95.9MiB / 5.786GiB
+2026-11-10T18:59:00Z
+soup-tracker-step12-app-1 CPU=28.99% memory=64.36MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=16.19% memory=96.89MiB / 5.786GiB
+2026-11-10T18:59:05Z
+soup-tracker-step12-app-1 CPU=26.24% memory=64.78MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=15.27% memory=99.95MiB / 5.786GiB
+2026-11-10T18:59:10Z
+soup-tracker-step12-app-1 CPU=30.06% memory=64.64MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=17.63% memory=101.7MiB / 5.786GiB
+2026-11-10T18:59:16Z
+soup-tracker-step12-app-1 CPU=44.14% memory=64.64MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=15.72% memory=102.7MiB / 5.786GiB
+2026-11-10T18:59:20Z
+soup-tracker-step12-app-1 CPU=30.85% memory=64.68MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=15.29% memory=103.4MiB / 5.786GiB
+2026-11-10T18:59:25Z
+soup-tracker-step12-app-1 CPU=30.56% memory=64.67MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=17.33% memory=104.6MiB / 5.786GiB
+2026-11-10T18:59:31Z
+soup-tracker-step12-app-1 CPU=30.92% memory=64.93MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=15.89% memory=105.7MiB / 5.786GiB
+2026-11-10T18:59:36Z
+soup-tracker-step12-app-1 CPU=7.15% memory=64.6MiB / 5.786GiB
+soup-tracker-step12-db-1 CPU=3.72% memory=110.4MiB / 5.786GiB

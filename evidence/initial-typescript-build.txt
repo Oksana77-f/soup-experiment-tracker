@@ -1,0 +1,6 @@
+> soup-experiment-tracker@1.0.0 build
+> tsc --noEmit && vite build
+
+src/main.tsx(76,54): error TS1109: Expression expected.
+src/main.tsx(76,61): error TS1005: ',' expected.
+src/main.tsx(76,67): error TS1005: ')' expected.

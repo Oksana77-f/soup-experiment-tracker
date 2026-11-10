@@ -1,0 +1,36 @@
+# Experiment tracker assessment
+
+**SHIP for the measured local profile with one observer per run. DON’T SHIP for five observers per run.** Steps 12 and 14 passed the minute with DOM p99 of 1.68 s and 1.61 s. Step 15 delivered every point but reached a DOM p99 of 2.65 s. The gate also requires zero losses or duplicates and a writer that sustains the schedule.
+
+## Measured load
+
+PostgreSQL 17.11 and one Uvicorn process ran through Docker Compose on WSL2 with 12 logical CPUs and 5.8 GiB visible to Docker. Each of 50 runs issued one ten-point batch per second. The base runs had one observer per run and step 15 had five. One Chromium instance measured DOM updates. The other 49 or 249 observers consumed HTTP SSE. Latencies start at the driver’s first POST attempt.
+
+| Run | Stored / attempted | Write window | POST p99 | SSE p99 | DOM p50 / p99 |
+|---|---:|---:|---:|---:|---:|
+| [First 60 s](../evidence/load-first.txt) | 30,000 / 30,000 | 75.62 s | 5.38 s | 5.84 s | 3.02 / 8.04 s |
+| [Separate 60 s, without retries](../evidence/load-no-retry.txt) | 29,990 / 30,000 | 59.61 s | 1.46 s | 2.30 s | 0.68 / 2.49 s |
+| [30 s, sender retry policy enabled](../evidence/load-1-viewers.txt) | 15,000 / 15,000 | 29.72 s | 0.74 s | 1.61 s | 0.61 / 1.64 s |
+| [60 s, step 12 with POST timings](../evidence/step12-load.txt) | 30,000 / 30,000 | 59.62 s | 0.64 s | 1.21 s | 0.58 / 1.68 s |
+| [60 s, step 14 confirmation](../evidence/step14-load.txt) | 30,000 / 30,000 | 59.61 s | 0.64 s | 1.20 s | 0.63 / 1.61 s |
+| [60 s, step 15 with five observers per run](../evidence/step15-load.txt) | 30,000 / 30,000 | 60.44 s | 1.86 s | 2.25 s | 1.26 / 2.65 s |
+
+The first run overlapped a test suite and exceeded the write schedule. The separate one-minute run reused HTTP connections and recorded one unacknowledged POST after `RemoteProtocolError`. PostgreSQL was ten points short. The old subscriber counter compared full tuples, including shifted sequence numbers, so its 360 figure describes missing expected tuples. The revised harness counts missing metric values independently and still checks the complete ordered sequence. The 30-second control reported zero missing or duplicate points, zero errors and zero retry attempts. In that control the highest sampled app and database CPU readings were 38.57% and 17.81%, with peak sampled memory of 64.26 MiB and 87.23 MiB. [Resource samples](../evidence/load-1-viewers-resources.txt)
+
+**Step 12 conditions.** The retry-enabled driver ran as a separate WSL process on the same machine as Compose, with the POST timing log enabled and no concurrent tests. The run had zero retry attempts, losses, duplicates or database mismatches. [Environment](../evidence/step12-environment.txt) · [Resources](../evidence/step12-resources.txt)
+
+**Step 13 diagnosis.** Across 3,000 accepted POSTs, server p99 was 169.35 ms. The write-pool acquisition p99 was 95.40 ms, the locking query p99 was 2.28 ms and commit p99 was 7.51 ms. Pool acquisition was the largest measured component in all 30 slowest handlers, with a median share of 66%. All 30 were in the first 50 completed POSTs. After those first 50, pool acquisition p99 was 0.08 ms and handler p99 was 29.29 ms. This is a startup concentration in the observed run. The pass gate did not trigger a corrective change. [Summary and tail analysis](../evidence/step12-summary.json) · [Raw POST timings](../evidence/step12-post.txt)
+
+**Step 14 confirmation.** The repeat used the same app image, PostgreSQL version, retry-enabled driver, Chromium and subscriber profile. It recorded zero losses, duplicates, mismatches, errors or retries across 3,000 POSTs. The driver was a separate WSL process on the same physical machine. The release decision covers this one-observer profile. [Environment](../evidence/step14-environment.txt) · [Summary](../evidence/step14-summary.json) · [Raw POST timings](../evidence/step14-post.txt)
+
+**Step 15 fan-out.** With 250 subscriptions, all 150,000 expected deliveries matched the input and database. There were zero errors or retries. The write window stayed within the 61 s gate. DOM p99 exceeded the 2 s gate. Sampled peak app CPU rose from 37.80% to 77.43%, and PostgreSQL CPU from 22.02% to 33.55%. Peak sampled memory was 75.06 MiB for the app and 106.40 MiB for PostgreSQL. Server handler p99 was 153.38 ms versus 174.35 ms at step 14, while write-pool p99 was 70.57 ms versus 80.68 ms. The generator and services shared a host. The aggregate timings describe the slowdown under fan-out and leave its exact source unresolved. [Summary](../evidence/step15-summary.json) · [Resources](../evidence/step15-resources.txt) · [Raw POST timings](../evidence/step15-post.txt)
+
+## Correctness and boundaries
+
+The original WSL pytest suite passed all 11 checks against PostgreSQL and Chromium. It compares input, database and DOM after a held reconnect and a separate `502`, checks project isolation and browser reuse, exercises batch conflicts and rollback, and checks rotation, restart and a stalled ASGI send of a data frame. Keepalive sends are outside that test. The app also passed a real Docker Compose restart smoke test. [Original pytest run](../evidence/pytest-final.txt) · [16 checks after POST timing](../evidence/pytest-step11.txt) · [Container restart](../evidence/compose-restart.txt)
+
+The replay mutation left one row visible where three were expected. The lock mutation produced HTTP `200` and `500` with SQLSTATE `23505` where two successes were required. [Replay control](../evidence/red-replay.txt) · [Lock control](../evidence/red-concurrent-write.txt)
+
+The browser scenarios cover one engine and controlled HTTP disconnects. Database failover, long histories, fan-out above five observers per run, intermediate cache misconfiguration and timing side channels remain outside these measurements. Logs record error classes and SQLSTATE rather than request credentials or metric bodies. The demo sender keeps an outstanding batch in memory during retries. PostgreSQL and application-state volumes survive the app restart tested here.
+
+The surprising validation failure was an SSE shutdown flag shared across in-process test servers. It caused later fixtures to terminate streams on startup. Resetting that fixture state and using the configured send timeout restored a passing full suite. The remaining concern is the write tail at sustained load. Codex assisted with code, tests, documentation and the measurement runs. [AI-use log](ai-usage-ru.md)

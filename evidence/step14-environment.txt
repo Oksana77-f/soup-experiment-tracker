@@ -1,0 +1,10 @@
+Driver: native WSL process outside Compose; app and database: Compose containers on the same machine.
+POST timing logging enabled; 60 seconds, 50 runs, 10 points/run/second, 1 viewer/run, retry-enabled sender.
+Linux 6.6.87.2-microsoft-standard-WSL2
+Logical CPUs: 12
+               total        used        free      shared  buff/cache   available
+Mem:           5.8Gi       1.1Gi       3.6Gi        32Mi       1.3Gi       4.7Gi
+Swap:          4.0Gi          0B       4.0Gi
+PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+App image: sha256:29404324ce8a4a7416add708c04d1d59f3389b5e4c94b15cfb56b5f26c04d2fa
+Driver exit status: 0

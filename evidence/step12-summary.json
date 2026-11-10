@@ -1,0 +1,98 @@
+{
+  "driver": {
+    "attempted_metrics": 30000,
+    "stored_metrics": 30000,
+    "database_mismatches": 0,
+    "subscriber_missing": 0,
+    "subscriber_duplicates": 0,
+    "subscriber_mismatches": 0,
+    "dom_samples": 600,
+    "write_window_s": 59.617,
+    "transport_retries": 0,
+    "post": {
+      "p50_ms": 325.88,
+      "p95_ms": 561.84,
+      "p99_ms": 642.48
+    },
+    "schedule_lag": {
+      "p50_ms": 58.48,
+      "p95_ms": 115.7,
+      "p99_ms": 132.49
+    },
+    "post_to_sse": {
+      "p50_ms": 835.54,
+      "p95_ms": 1148.44,
+      "p99_ms": 1207.98
+    },
+    "post_to_dom": {
+      "p50_ms": 580.52,
+      "p95_ms": 1534.7,
+      "p99_ms": 1681.92
+    },
+    "errors": [],
+    "verdict": "SHIP"
+  },
+  "outcomes": {
+    "accepted": 3000
+  },
+  "server_ms": {
+    "total_ms": {
+      "p50": 12.584,
+      "p95": 21.938,
+      "p99": 169.354,
+      "p100": 257.807
+    },
+    "pool_wait_ms": {
+      "p50": 0.023,
+      "p95": 0.041,
+      "p99": 95.396,
+      "p100": 181.939
+    },
+    "run_lock_ms": {
+      "p50": 0.337,
+      "p95": 0.776,
+      "p99": 2.281,
+      "p100": 6.804
+    },
+    "commit_ms": {
+      "p50": 1.232,
+      "p95": 2.625,
+      "p99": 7.51,
+      "p100": 24.484
+    },
+    "rest_of_handler_ms": {
+      "p50": 10.856,
+      "p95": 18.933,
+      "p99": 66.008,
+      "p100": 79.484
+    }
+  },
+  "resources": {
+    "app": {
+      "samples": 16,
+      "max_cpu_percent": 44.14,
+      "max_memory_mib": 64.93
+    },
+    "db": {
+      "samples": 16,
+      "max_cpu_percent": 20.33,
+      "max_memory_mib": 110.4
+    }
+  },
+  "slowest_30_server_requests": {
+    "scope": "slowest 30 server handlers by total_ms, out of 3000 accepted requests",
+    "dominant_component_counts": {
+      "pool_wait_ms": 30
+    },
+    "median_pool_wait_ms": 156.71,
+    "median_pool_wait_fraction": 0.6606,
+    "completion_log_position_min": 21,
+    "completion_log_position_max": 50
+  },
+  "after_first_50_post_log_entries": {
+    "samples": 2950,
+    "handler_p99_ms": 29.285,
+    "pool_wait_p99_ms": 0.08,
+    "pool_wait_max_ms": 0.597
+  }
+}

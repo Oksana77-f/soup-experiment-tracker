@@ -1,0 +1,94 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.7.0 -- /mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/soup-linux-venv/bin/python
+cachedir: .pytest_cache
+rootdir: /mnt/c/Users/Оксана/Desktop/Soup Experiment Tracker
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.16.0, asyncio-1.3.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 11 items
+
+tests/test_api.py::test_batches_retry_overlap_conflict_and_scope PASSED  [  9%]
+tests/test_api.py::test_failure_after_insert_rolls_back_receipt_points_and_cursor PASSED [ 18%]
+tests/test_api.py::test_project_isolation_and_csrf PASSED                [ 27%]
+tests/test_api.py::test_concurrent_batches_share_one_point PASSED        [ 36%]
+tests/test_api.py::test_rotation_stops_open_stream_and_old_keys PASSED   [ 45%]
+tests/test_api.py::test_sender_keeps_exact_body_on_retry_and_stops_on_409 PASSED [ 54%]
+tests/test_stream.py::test_browser_matches_input_and_database_after_disconnect[native-reconnect] PASSED [ 63%]
+tests/test_stream.py::test_browser_matches_input_and_database_after_disconnect[closed-after-502] PASSED [ 72%]
+tests/test_stream.py::test_same_browser_does_not_reuse_previous_project_data FAILED [ 81%]
+tests/test_stream.py::test_browser_recovers_across_application_restart FAILED [ 90%]
+tests/test_stream.py::test_stalled_send_times_out_without_holding_a_db_connection FAILED [100%]
+
+=================================== FAILURES ===================================
+____________ test_same_browser_does_not_reuse_previous_project_data ____________
+tests/test_stream.py:135: in test_same_browser_does_not_reuse_previous_project_data
+    await sign_in(page, url, b)
+tests/test_stream.py:55: in sign_in
+    await expect(page.get_by_test_id("connection")).to_have_text("Live", timeout=8000)
+E   AssertionError: Locator expected to have text 'Live'
+E   Actual value: Reconnecting 
+E   Call log:
+E     - Expect "to_have_text" with timeout 8000ms
+E     - waiting for get_by_test_id("connection")
+E       - locator resolved to <span role="status" class="status loading" data-testid="connection">Loading</span>
+E       - unexpected value "Loading"
+E       9 × locator resolved to <span role="status" data-testid="connection" class="status reconnecting">Reconnecting</span>
+E         - unexpected value "Reconnecting"
+----------------------------- Captured stderr call -----------------------------
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+_______________ test_browser_recovers_across_application_restart _______________
+tests/test_stream.py:153: in test_browser_recovers_across_application_restart
+    await sign_in(page, url, target)
+tests/test_stream.py:55: in sign_in
+    await expect(page.get_by_test_id("connection")).to_have_text("Live", timeout=8000)
+E   AssertionError: Locator expected to have text 'Live'
+E   Actual value: Reconnecting 
+E   Call log:
+E     - Expect "to_have_text" with timeout 8000ms
+E     - waiting for get_by_test_id("connection")
+E       - locator resolved to <span role="status" class="status loading" data-testid="connection">Loading</span>
+E       - unexpected value "Loading"
+E       9 × locator resolved to <span role="status" data-testid="connection" class="status reconnecting">Reconnecting</span>
+E         - unexpected value "Reconnecting"
+----------------------------- Captured stderr call -----------------------------
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+ERROR:    ASGI callable returned without completing response.
+_________ test_stalled_send_times_out_without_holding_a_db_connection __________
+tests/test_stream.py:213: in test_stalled_send_times_out_without_holding_a_db_connection
+    assert timed_out and received_ids == [1]
+E   assert (False)
+=========================== short test summary info ============================
+FAILED tests/test_stream.py::test_same_browser_does_not_reuse_previous_project_data - AssertionError: Locator expected to have text 'Live'
+Actual value: Reconnecting 
+Call log:
+  - Expect "to_have_text" with timeout 8000ms
+  - waiting for get_by_test_id("connection")
+    - locator resolved to <span role="status" class="status loading" data-testid="connection">Loading</span>
+    - unexpected value "Loading"
+    9 × locator resolved to <span role="status" data-testid="connection" class="status reconnecting">Reconnecting</span>
+      - unexpected value "Reconnecting"
+FAILED tests/test_stream.py::test_browser_recovers_across_application_restart - AssertionError: Locator expected to have text 'Live'
+Actual value: Reconnecting 
+Call log:
+  - Expect "to_have_text" with timeout 8000ms
+  - waiting for get_by_test_id("connection")
+    - locator resolved to <span role="status" class="status loading" data-testid="connection">Loading</span>
+    - unexpected value "Loading"
+    9 × locator resolved to <span role="status" data-testid="connection" class="status reconnecting">Reconnecting</span>
+      - unexpected value "Reconnecting"
+FAILED tests/test_stream.py::test_stalled_send_times_out_without_holding_a_db_connection - assert (False)
+=================== 3 failed, 8 passed in 122.02s (0:02:02) ====================

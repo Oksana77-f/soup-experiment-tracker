@@ -1,0 +1,3 @@
+PASS Chrome sign-in, SSE display, out-of-order points, exact deduplication and cross-project write rejection
+PASS Docker Compose app restart preserves the cookie and resumes the open run
+PASS rotating read key closes the browser session with an open stream

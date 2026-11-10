@@ -1,0 +1,35 @@
+{"started_utc": "2026-11-10T18:58:20.667257+00:00", "runs": 50, "metrics_per_run_per_second": 10, "seconds": 60, "viewers_per_run": 1, "browser_viewers": 1, "http_sse_viewers": 49, "metrics_per_batch": 10, "schedule": "one synchronized batch per run per second", "driver_platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"}
+{"browser_version": "145.0.7632.6"}
+{
+  "attempted_metrics": 30000,
+  "stored_metrics": 30000,
+  "database_mismatches": 0,
+  "subscriber_missing": 0,
+  "subscriber_duplicates": 0,
+  "subscriber_mismatches": 0,
+  "dom_samples": 600,
+  "write_window_s": 59.617,
+  "transport_retries": 0,
+  "post": {
+    "p50_ms": 325.88,
+    "p95_ms": 561.84,
+    "p99_ms": 642.48
+  },
+  "schedule_lag": {
+    "p50_ms": 58.48,
+    "p95_ms": 115.7,
+    "p99_ms": 132.49
+  },
+  "post_to_sse": {
+    "p50_ms": 835.54,
+    "p95_ms": 1148.44,
+    "p99_ms": 1207.98
+  },
+  "post_to_dom": {
+    "p50_ms": 580.52,
+    "p95_ms": 1534.7,
+    "p99_ms": 1681.92
+  },
+  "errors": [],
+  "verdict": "SHIP"
+}

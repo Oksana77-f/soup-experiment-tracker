@@ -1,0 +1,120 @@
+{
+  "driver": {
+    "attempted_metrics": 30000,
+    "stored_metrics": 30000,
+    "database_mismatches": 0,
+    "subscriber_missing": 0,
+    "subscriber_duplicates": 0,
+    "subscriber_mismatches": 0,
+    "dom_samples": 600,
+    "write_window_s": 60.444,
+    "transport_retries": 0,
+    "post": {
+      "p50_ms": 506.21,
+      "p95_ms": 1030.71,
+      "p99_ms": 1860.36
+    },
+    "schedule_lag": {
+      "p50_ms": 69.79,
+      "p95_ms": 212.57,
+      "p99_ms": 1193.16
+    },
+    "post_to_sse": {
+      "p50_ms": 1048.63,
+      "p95_ms": 1687.38,
+      "p99_ms": 2245.55
+    },
+    "post_to_dom": {
+      "p50_ms": 1262.98,
+      "p95_ms": 1694.75,
+      "p99_ms": 2649.48
+    },
+    "errors": [],
+    "verdict": "DON'T SHIP"
+  },
+  "outcomes": {
+    "accepted": 3000
+  },
+  "server_ms": {
+    "total_ms": {
+      "p50": 19.935,
+      "p95": 82.238,
+      "p99": 153.38,
+      "p100": 314.786
+    },
+    "pool_wait_ms": {
+      "p50": 0.023,
+      "p95": 0.072,
+      "p99": 70.573,
+      "p100": 188.623
+    },
+    "run_lock_ms": {
+      "p50": 0.45,
+      "p95": 3.646,
+      "p99": 7.475,
+      "p100": 51.297
+    },
+    "commit_ms": {
+      "p50": 1.483,
+      "p95": 5.066,
+      "p99": 9.342,
+      "p100": 38.943
+    },
+    "rest_of_handler_ms": {
+      "p50": 17.497,
+      "p95": 70.446,
+      "p99": 110.4,
+      "p100": 135.514
+    }
+  },
+  "resources": {
+    "app": {
+      "samples": 21,
+      "max_cpu_percent": 77.43,
+      "max_memory_mib": 75.06
+    },
+    "db": {
+      "samples": 21,
+      "max_cpu_percent": 33.55,
+      "max_memory_mib": 106.4
+    }
+  },
+  "comparison_to_step14": {
+    "subscriptions": [
+      50,
+      250
+    ],
+    "verified_deliveries": [
+      30000,
+      150000
+    ],
+    "dom_p99_ms": [
+      1614.21,
+      2649.48
+    ],
+    "post_p99_ms": [
+      644.75,
+      1860.36
+    ],
+    "sse_p99_ms": [
+      1200.17,
+      2245.55
+    ],
+    "handler_p99_ms": [
+      174.348,
+      153.38
+    ],
+    "write_pool_p99_ms": [
+      80.678,
+      70.573
+    ],
+    "sampled_app_cpu_peak_percent": [
+      37.8,
+      77.43
+    ],
+    "sampled_db_cpu_peak_percent": [
+      22.02,
+      33.55
+    ]
+  }
+}

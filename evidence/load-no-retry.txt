@@ -1,0 +1,37 @@
+{"started_utc": "2026-11-10T18:37:01.889985+00:00", "runs": 50, "metrics_per_run_per_second": 10, "seconds": 60, "viewers_per_run": 1, "browser_viewers": 1, "http_sse_viewers": 49, "metrics_per_batch": 10, "schedule": "one synchronized batch per run per second", "driver_platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"}
+{"browser_version": "145.0.7632.6"}
+{
+  "attempted_metrics": 30000,
+  "stored_metrics": 29990,
+  "database_mismatches": 1,
+  "subscriber_missing": 360,
+  "subscriber_duplicates": 0,
+  "subscriber_mismatches": 1,
+  "dom_samples": 600,
+  "write_window_s": 59.607,
+  "post": {
+    "p50_ms": 345.33,
+    "p95_ms": 723.58,
+    "p99_ms": 1456.03
+  },
+  "schedule_lag": {
+    "p50_ms": 57.49,
+    "p95_ms": 155.37,
+    "p99_ms": 789.38
+  },
+  "post_to_sse": {
+    "p50_ms": 648.32,
+    "p95_ms": 1526.3,
+    "p99_ms": 2304.27
+  },
+  "post_to_dom": {
+    "p50_ms": 675.76,
+    "p95_ms": 1659.32,
+    "p99_ms": 2485.33
+  },
+  "errors": [
+    "write 3ed1feb6-b001-4aff-b83b-2973ab963cf5/24: RemoteProtocolError",
+    "stream 3ed1feb6-b001-4aff-b83b-2973ab963cf5/0: TimeoutError"
+  ],
+  "verdict": "DON'T SHIP"
+}

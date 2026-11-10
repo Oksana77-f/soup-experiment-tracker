@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+.venv/
+.env
+*.pyc
+frontend/node_modules/
+frontend/dist/
+playwright-report/
+test-results/
+.env-session-secret

@@ -1,0 +1,82 @@
+{
+  "driver": {
+    "attempted_metrics": 30000,
+    "stored_metrics": 30000,
+    "database_mismatches": 0,
+    "subscriber_missing": 0,
+    "subscriber_duplicates": 0,
+    "subscriber_mismatches": 0,
+    "dom_samples": 600,
+    "write_window_s": 59.612,
+    "transport_retries": 0,
+    "post": {
+      "p50_ms": 331.53,
+      "p95_ms": 573.95,
+      "p99_ms": 644.75
+    },
+    "schedule_lag": {
+      "p50_ms": 61.85,
+      "p95_ms": 117.96,
+      "p99_ms": 132.98
+    },
+    "post_to_sse": {
+      "p50_ms": 845.21,
+      "p95_ms": 1142.79,
+      "p99_ms": 1200.17
+    },
+    "post_to_dom": {
+      "p50_ms": 631.04,
+      "p95_ms": 1536.85,
+      "p99_ms": 1614.21
+    },
+    "errors": [],
+    "verdict": "SHIP"
+  },
+  "outcomes": {
+    "accepted": 3000
+  },
+  "server_ms": {
+    "total_ms": {
+      "p50": 12.816,
+      "p95": 21.415,
+      "p99": 174.348,
+      "p100": 252.852
+    },
+    "pool_wait_ms": {
+      "p50": 0.023,
+      "p95": 0.044,
+      "p99": 80.678,
+      "p100": 154.016
+    },
+    "run_lock_ms": {
+      "p50": 0.353,
+      "p95": 0.885,
+      "p99": 2.574,
+      "p100": 8.835
+    },
+    "commit_ms": {
+      "p50": 1.236,
+      "p95": 2.716,
+      "p99": 9.567,
+      "p100": 19.783
+    },
+    "rest_of_handler_ms": {
+      "p50": 11.047,
+      "p95": 18.165,
+      "p99": 69.945,
+      "p100": 164.266
+    }
+  },
+  "resources": {
+    "app": {
+      "samples": 16,
+      "max_cpu_percent": 37.8,
+      "max_memory_mib": 64.93
+    },
+    "db": {
+      "samples": 16,
+      "max_cpu_percent": 22.02,
+      "max_memory_mib": 106.0
+    }
+  }
+}

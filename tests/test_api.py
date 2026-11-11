@@ -1,6 +1,7 @@
 import asyncio
 import json
 from dataclasses import replace
+from time import perf_counter
 from uuid import uuid4
 
 import httpx
@@ -13,6 +14,7 @@ from tracker.admin import rotate_key
 from tracker.app import create_app, timing_log
 from tracker.models import MAX_BODY_BYTES, MAX_INTEGER, Batch
 from tracker.send import post_batch
+from tracker.settings import Settings
 
 from conftest import auth, batch, frames, live_server, login, point, post, query, seed
 
@@ -250,7 +252,7 @@ async def test_concurrent_batches_share_one_point(api, settings, monkeypatch):
 
 
 async def test_rotation_stops_open_stream_and_old_keys(settings):
-    app = create_app(settings)
+    app = create_app(replace(settings, poll_seconds=Settings.poll_seconds))
     async with live_server(app) as url:
         target = await seed(settings.database_url)
         async with httpx.AsyncClient(base_url=url, timeout=5) as client:
@@ -263,10 +265,13 @@ async def test_rotation_stops_open_stream_and_old_keys(settings):
                 async with await psycopg.AsyncConnection.connect(settings.database_url, row_factory=dict_row) as conn:
                     new_read = await rotate_key(conn, target.project, "read")
                     new_write = await rotate_key(conn, target.project, "write")
-                assert (await post(client, target, batch(point(8)))).status_code == 401
-                assert (await post(client, target, batch(point(8)), key=new_write)).status_code == 200
-                with pytest.raises(StopAsyncIteration):
-                    await asyncio.wait_for(anext(messages), 2)
+                rotated_at = perf_counter()
+                async with asyncio.timeout(2):
+                    assert (await post(client, target, batch(point(8)))).status_code == 401
+                    assert (await post(client, target, batch(point(8)), key=new_write)).status_code == 200
+                    with pytest.raises(StopAsyncIteration):
+                        await anext(messages)
+                print(f"Rotation commit to observed SSE EOF: {perf_counter() - rotated_at:.3f} s (idle poll 1 s)")
             assert (await client.get("/runs")).status_code == 401
             assert (await client.post("/api/session", headers=auth(target.read))).status_code == 401
             assert (await client.post("/api/session", headers=auth(new_read))).status_code == 204

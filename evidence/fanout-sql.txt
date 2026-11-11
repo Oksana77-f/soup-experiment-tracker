@@ -1,0 +1,193 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 450B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 816B 0.1s done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/node:22-alpine
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/python:3.11-slim
+#4 DONE 0.0s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 32B
+#5 transferring context: 134B 0.1s done
+#5 DONE 0.1s
+
+#6 [ui 1/6] FROM docker.io/library/node:22-alpine
+#6 DONE 0.0s
+
+#7 [runtime 1/6] FROM docker.io/library/python:3.11-slim
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 transferring context: 816B 0.2s done
+#8 DONE 0.2s
+
+#9 [ui 3/6] COPY frontend/package.json frontend/package-lock.json ./
+#9 CACHED
+
+#10 [runtime 3/6] COPY requirements.txt .
+#10 CACHED
+
+#11 [ui 2/6] WORKDIR /build
+#11 CACHED
+
+#12 [ui 6/6] RUN npm run build
+#12 CACHED
+
+#13 [runtime 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#13 CACHED
+
+#14 [runtime 5/6] COPY tracker ./tracker
+#14 CACHED
+
+#15 [runtime 2/6] WORKDIR /app
+#15 CACHED
+
+#16 [ui 5/6] COPY frontend/ ./
+#16 CACHED
+
+#17 [ui 4/6] RUN npm ci
+#17 CACHED
+
+#18 [runtime 6/6] COPY --from=ui /build/dist ./frontend/dist
+#18 CACHED
+
+#19 exporting to image
+#19 exporting layers done
+#19 writing image sha256:29404324ce8a4a7416add708c04d1d59f3389b5e4c94b15cfb56b5f26c04d2fa done
+#19 naming to docker.io/library/soup-read-fanout-check-app done
+#19 DONE 0.0s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+ app  Built
+ Network soup-read-fanout-check_default  Creating
+ Network soup-read-fanout-check_default  Created
+ Volume "soup-read-fanout-check_tracker-data"  Creating
+ Volume "soup-read-fanout-check_tracker-data"  Created
+ Volume "soup-read-fanout-check_tracker-state"  Creating
+ Volume "soup-read-fanout-check_tracker-state"  Created
+ Container soup-read-fanout-check-db-1  Creating
+ Container soup-read-fanout-check-db-1  Created
+ Container soup-read-fanout-check-app-1  Creating
+ Container soup-read-fanout-check-app-1  Created
+ Container soup-read-fanout-check-db-1  Starting
+ Container soup-read-fanout-check-db-1  Started
+ Container soup-read-fanout-check-db-1  Waiting
+ Container soup-read-fanout-check-db-1  Healthy
+ Container soup-read-fanout-check-app-1  Starting
+ Container soup-read-fanout-check-app-1  Started
+ Container soup-read-fanout-check-db-1  Waiting
+ Container soup-read-fanout-check-app-1  Waiting
+ Container soup-read-fanout-check-db-1  Healthy
+ Container soup-read-fanout-check-app-1  Healthy
+CREATE EXTENSION
+                                         version                                          
+------------------------------------------------------------------------------------------
+ PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+(1 row)
+
+App image: sha256:29404324ce8a4a7416add708c04d1d59f3389b5e4c94b15cfb56b5f26c04d2fa
+Driver: native WSL. Same Compose app, DB and host for both 30 s diagnostics. POST timing logs off.
+SQL statistics count run_page reads including setup, snapshots and replay. Execution time excludes pool wait.
+   pg_stat_statements_reset    
+-------------------------------
+ 2026-11-11 17:41:35.998935+00
+(1 row)
+
+{"started_utc": "2026-11-11T17:41:40.902617+00:00", "runs": 50, "metrics_per_run_per_second": 10, "seconds": 30, "viewers_per_run": 1, "browser_viewers": 1, "http_sse_viewers": 49, "metrics_per_batch": 10, "schedule": "one synchronized batch per run per second", "driver_platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"}
+{"browser_version": "145.0.7632.6"}
+{
+  "attempted_metrics": 15000,
+  "stored_metrics": 15000,
+  "database_mismatches": 0,
+  "subscriber_missing": 0,
+  "subscriber_duplicates": 0,
+  "subscriber_mismatches": 0,
+  "dom_samples": 300,
+  "write_window_s": 29.655,
+  "transport_retries": 0,
+  "post": {
+    "p50_ms": 356.17,
+    "p95_ms": 723.57,
+    "p99_ms": 835.64
+  },
+  "schedule_lag": {
+    "p50_ms": 58.77,
+    "p95_ms": 120.16,
+    "p99_ms": 150.5
+  },
+  "post_to_sse": {
+    "p50_ms": 782.09,
+    "p95_ms": 1101.68,
+    "p99_ms": 1715.9
+  },
+  "post_to_dom": {
+    "p50_ms": 636.6,
+    "p95_ms": 1590.55,
+    "p99_ms": 1669.16
+  },
+  "errors": [],
+  "verdict": "SHIP"
+}
+Viewers per run: 1. Driver wall seconds: 71. Driver exit code: 0.
+ page_reads | total_execution_ms | execution_ms_per_read 
+------------+--------------------+-----------------------
+       3044 |             435.65 |                 0.143
+(1 row)
+
+   pg_stat_statements_reset    
+-------------------------------
+ 2026-11-11 17:42:47.636386+00
+(1 row)
+
+{"started_utc": "2026-11-11T17:42:54.587264+00:00", "runs": 50, "metrics_per_run_per_second": 10, "seconds": 30, "viewers_per_run": 5, "browser_viewers": 1, "http_sse_viewers": 249, "metrics_per_batch": 10, "schedule": "one synchronized batch per run per second", "driver_platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"}
+{"browser_version": "145.0.7632.6"}
+{
+  "attempted_metrics": 15000,
+  "stored_metrics": 15000,
+  "database_mismatches": 0,
+  "subscriber_missing": 0,
+  "subscriber_duplicates": 0,
+  "subscriber_mismatches": 0,
+  "dom_samples": 300,
+  "write_window_s": 32.306,
+  "transport_retries": 0,
+  "post": {
+    "p50_ms": 556.14,
+    "p95_ms": 1834.12,
+    "p99_ms": 3146.8
+  },
+  "schedule_lag": {
+    "p50_ms": 103.74,
+    "p95_ms": 2400.39,
+    "p99_ms": 3917.49
+  },
+  "post_to_sse": {
+    "p50_ms": 1067.83,
+    "p95_ms": 2304.19,
+    "p99_ms": 3541.07
+  },
+  "post_to_dom": {
+    "p50_ms": 1353.39,
+    "p95_ms": 2417.28,
+    "p99_ms": 2606.99
+  },
+  "errors": [],
+  "verdict": "DON'T SHIP"
+}
+Viewers per run: 5. Driver wall seconds: 79. Driver exit code: 1.
+ page_reads | total_execution_ms | execution_ms_per_read 
+------------+--------------------+-----------------------
+      14607 |            1895.96 |                 0.130
+(1 row)
+
+ Container soup-read-fanout-check-app-1  Stopping
+ Container soup-read-fanout-check-app-1  Stopped
+ Container soup-read-fanout-check-db-1  Stopping
+ Container soup-read-fanout-check-db-1  Stopped

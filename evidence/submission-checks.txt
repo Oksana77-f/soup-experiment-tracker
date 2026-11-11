@@ -1,0 +1,26 @@
+b9941636dd68a2e54cfcfbb28c8cd6ae6e12836c
+23f899b81e2bb5b6ab09e521549f22be74b29737
+f15092684d1163cdc518f72751208460d53283d1
+Reused test image from fresh-clone Compose build: sha256:07d9ace1ce038da7581342bcdbefcd43ea888b9fff48cabfad9f006d4a997b99
+Application and dependencies are unchanged. Mounting current tests read-only into the prior image.
+ Container soup-report-check-db-1  Starting
+ Container soup-report-check-db-1  Started
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.0.2, pluggy-1.7.0
+rootdir: /app
+configfile: pytest.ini
+testpaths: tests
+plugins: asyncio-1.3.0, anyio-4.16.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 17 items
+
+tests/test_api.py .........Rotation commit to observed SSE EOF: 0.946 s (idle poll 1 s)
+..
+tests/test_crash.py Writer exited with -9 before COMMIT. Snapshot and receipts empty. Retry inserted 2 points.
+.
+ERROR:    ASGI callable returned without completing response.
+tests/test_stream.py .....
+
+============================= 17 passed in 17.03s ==============================
+ Container soup-report-check-db-1  Stopping
+ Container soup-report-check-db-1  Stopped

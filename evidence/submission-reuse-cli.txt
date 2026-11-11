@@ -1,0 +1,8 @@
+b9941636dd68a2e54cfcfbb28c8cd6ae6e12836c
+23f899b81e2bb5b6ab09e521549f22be74b29737
+f15092684d1163cdc518f72751208460d53283d1
+Reused test image from fresh-clone Compose build: sha256:07d9ace1ce038da7581342bcdbefcd43ea888b9fff48cabfad9f006d4a997b99
+Application and dependencies are unchanged. Mounting current tests read-only into the prior image.
+unknown flag: --no-build
+ Container soup-report-check-db-1  Stopping
+ Container soup-report-check-db-1  Stopped

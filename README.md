@@ -63,7 +63,7 @@ docker compose --profile test run --rm -e TRACKER_TEST_MUTATION=no-run-lock test
 
 The last two commands should fail. They change behavior only inside their test fixtures. The test service uses a separate `soup_tests` database. The browser checks compare actual DOM rows, stored data and input. The deterministic network test closes an HTTP SSE response from the server, then holds the next request while it writes new points. A separate variant returns one `502`. The slow-client test stalls an ASGI send of a data frame.
 
-The [fresh-clone check](evidence/fresh-clone-compose.txt) records the browser demo and the full Compose test run.
+The [fresh-clone check](evidence/fresh-clone-compose.txt) records the browser demo. The [latest full Compose run](evidence/submission-checks.txt) includes the writer process kill before commit and rotation at the default idle poll interval.
 
 Run the benchmark on a local instance with a disposable demo database. It creates a separate benchmark project for every invocation.
 

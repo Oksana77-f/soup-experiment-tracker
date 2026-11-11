@@ -1,5 +1,6 @@
 import hashlib
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 from time import perf_counter_ns
 from uuid import UUID
@@ -50,7 +51,16 @@ async def find_key(pool, token, scope):
         return await result.fetchone()
 
 
-async def list_runs(pool, key_id):
+async def revoke_session(pool: AsyncConnectionPool, digest: str, expires_at: datetime) -> None:
+    async with pool.connection() as conn, conn.transaction():
+        await conn.execute("DELETE FROM revoked_sessions WHERE expires_at <= %s", (datetime.now(UTC),))
+        await conn.execute(
+            "INSERT INTO revoked_sessions (digest, expires_at) VALUES (%s, %s) ON CONFLICT (digest) DO NOTHING",
+            (digest, expires_at),
+        )
+
+
+async def list_runs(pool, key_id, session_digest):
     async with pool.connection() as conn:
         result = await conn.execute(
             """
@@ -60,14 +70,15 @@ async def list_runs(pool, key_id):
             FROM api_keys k JOIN projects p ON p.id = k.project_id
             LEFT JOIN runs r ON r.project_id = p.id
             WHERE k.id = %s AND k.scope = 'read' AND k.revoked_at IS NULL
+              AND NOT EXISTS (SELECT 1 FROM revoked_sessions WHERE digest = %s)
             GROUP BY p.id
             """,
-            (key_id,),
+            (key_id, session_digest),
         )
         return await result.fetchone()
 
 
-async def run_page(pool, key_id, run_id, after=0, limit=None):
+async def run_page(pool, key_id, session_digest, run_id, after=0, limit=None):
     async with pool.connection() as conn:
         result = await conn.execute(
             """
@@ -82,8 +93,9 @@ async def run_page(pool, key_id, run_id, after=0, limit=None):
                 ) m
             ) page
             WHERE k.id = %s AND k.scope = 'read' AND k.revoked_at IS NULL
+              AND NOT EXISTS (SELECT 1 FROM revoked_sessions WHERE digest = %s)
             """,
-            (run_id, after, limit, key_id),
+            (run_id, after, limit, key_id, session_digest),
         )
         return await result.fetchone()
 

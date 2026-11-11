@@ -5,7 +5,7 @@ from urllib.parse import urlsplit
 
 import httpx
 import pytest
-from playwright.async_api import async_playwright, expect
+from playwright.async_api import Route, async_playwright, expect
 from sse_starlette import JSONServerSentEvent
 from sse_starlette.sse import SendTimeoutError
 from starlette.datastructures import Headers
@@ -20,7 +20,7 @@ app_module = importlib.import_module("tracker.app")
 @pytest.fixture
 async def browser():
     async with async_playwright() as playwright:
-        instance = await playwright.chromium.launch()
+        instance = await playwright.chromium.launch(ignore_default_args=["--disable-back-forward-cache"])
         try:
             yield instance
         finally:
@@ -132,6 +132,9 @@ async def test_same_browser_does_not_reuse_previous_project_data(settings, brows
             assert (await post(sender, b, batch(point(71, 1.2, "private_loss")))).status_code == 200
         page = await browser.new_page()
         try:
+            await page.add_init_script("""window.addEventListener('pageshow', event => {
+              if (event.persisted) sessionStorage.setItem('soup-test-bfcache', 'restored');
+            });""")
             await sign_in(page, url, b)
             await expect(page.get_by_text("private_loss")).to_be_visible()
             await page.get_by_role("link", name="All runs").click()
@@ -144,10 +147,80 @@ async def test_same_browser_does_not_reuse_previous_project_data(settings, brows
             await expect(page).to_have_url(url + f"/view/{b.run}")
             await expect(page.get_by_role("alert")).to_contain_text("Could not load")
             await expect(page.get_by_text("private_loss")).to_have_count(0)
+            history = await page.evaluate("""() => ({
+              restored: sessionStorage.getItem('soup-test-bfcache') === 'restored',
+              reasons: performance.getEntriesByType('navigation')[0]?.notRestoredReasons?.reasons
+                ?.map(reason => reason.reason) ?? []
+            })""")
+            print(f"Chromium history navigation: {history}")
             await page.goto(url + f"/view/{b.run}")
             await expect(page.get_by_role("alert")).to_contain_text("Could not load")
             await expect(page.get_by_text("private_loss")).to_have_count(0)
         finally:
+            await page.close()
+
+
+async def test_logout_clears_run_and_list_in_other_tabs(settings, browser):
+    async with live_server(create_app(settings)) as url:
+        target = await seed(settings.database_url)
+        async with httpx.AsyncClient(base_url=url) as sender:
+            assert (await post(sender, target, batch(point(1, name="private_loss")))).status_code == 200
+        async with await browser.new_context() as context:
+            run_tab = await context.new_page()
+            await sign_in(run_tab, url, target)
+            await expect(run_tab.get_by_text("private_loss")).to_be_visible()
+
+            list_tab = await context.new_page()
+            await list_tab.goto(url)
+            await expect(list_tab.get_by_role("heading", name="Training runs")).to_be_visible()
+
+            logout_tab = await context.new_page()
+            await logout_tab.goto(url)
+            await logout_tab.get_by_role("button", name="Sign out").click()
+
+            for page in (run_tab, list_tab):
+                await expect(page.get_by_role("heading", name="Sign in")).to_be_visible()
+                await expect(page.get_by_text(target.name, exact=True)).to_have_count(0)
+            await expect(run_tab.get_by_text("private_loss")).to_have_count(0)
+
+
+async def test_snapshot_cursor_replays_multiple_pages_before_first_subscription(settings, browser):
+    async with live_server(create_app(settings)) as url:
+        target = await seed(settings.database_url)
+        held = asyncio.Event()
+        release = asyncio.Event()
+        page = await browser.new_page()
+
+        async def hold_first_stream(route: Route) -> None:
+            held.set()
+            await release.wait()
+            await route.continue_()
+
+        try:
+            async with httpx.AsyncClient(base_url=url, timeout=5) as sender:
+                assert (await post(sender, target, batch(point(101)))).status_code == 200
+                stream = f"{url}/runs/{target.run}/events?after=1"
+                await page.route(lambda address: address == stream, hold_first_stream)
+                await page.goto(url + f"/view/{target.run}")
+                await page.get_by_label("Project read key").fill(target.read)
+                await page.get_by_role("button", name="Sign in").click()
+                await asyncio.wait_for(held.wait(), 10)
+                rows = page.get_by_test_id("metric-row")
+                await expect(rows).to_have_count(1)
+
+                late = batch(*(point(step) for step in range(101)))
+                assert (await post(sender, target, late)).json()["inserted"] == 101
+                release.set()
+                await expect(rows).to_have_count(102, timeout=10000)
+
+            expected = [{"step": step, "seq": step + 2} for step in range(101)] + [{"step": 101, "seq": 1}]
+            stored = await query(settings.database_url, "SELECT step, seq FROM metrics WHERE run_id = %s ORDER BY step",
+                                 (target.run,))
+            assert stored == expected
+            displayed = await rows.evaluate_all("rows => rows.map(r => [r.cells[0].textContent, r.cells[3].textContent])")
+            assert displayed == [[str(item["step"]), str(item["seq"])] for item in expected]
+        finally:
+            release.set()
             await page.close()
 
 

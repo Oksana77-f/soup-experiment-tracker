@@ -4,8 +4,10 @@ import json
 import logging
 from contextlib import asynccontextmanager
 from dataclasses import asdict
+from datetime import UTC, datetime
 from time import perf_counter_ns
 from uuid import UUID
+from weakref import WeakValueDictionary
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, JSONResponse, Response
@@ -18,7 +20,7 @@ from sse_starlette import EventSourceResponse, JSONServerSentEvent, ServerSentEv
 from starlette.datastructures import MutableHeaders
 
 from . import db
-from .auth import COOKIE, Sessions, api_key, browser_origin
+from .auth import COOKIE, ReadSession, Sessions, api_key, browser_origin
 from .models import MAX_BODY_BYTES, MAX_INTEGER, Batch
 from .settings import Settings
 
@@ -73,6 +75,7 @@ async def batch_body(request):
 def create_app(settings=None):
     settings = settings or Settings.from_env()
     sessions = Sessions(settings)
+    session_ends: WeakValueDictionary[str, asyncio.Event] = WeakValueDictionary()
     pool = AsyncConnectionPool(
         settings.database_url,
         kwargs={"row_factory": dict_row, "autocommit": True},
@@ -103,10 +106,17 @@ def create_app(settings=None):
             await conn.execute("SELECT 1")
         return {"ok": True}
 
+    async def end_session(request: Request) -> None:
+        if session := sessions.read(request):
+            await db.revoke_session(pool, session.digest, session.expires_at)
+            if ended := session_ends.get(session.digest):
+                ended.set()
+
     @app.post("/api/session")
     async def login(request: Request):
         browser_origin(request)
         key = await api_key(request, "read")
+        await end_session(request)
         response = Response(status_code=204)
         response.set_cookie(
             COOKIE, sessions.issue(key["id"]), max_age=settings.session_seconds,
@@ -117,30 +127,34 @@ def create_app(settings=None):
     @app.post("/api/session/logout")
     async def logout(request: Request):
         browser_origin(request, required=True)
+        await end_session(request)
         response = Response(status_code=204)
         response.delete_cookie(COOKIE, httponly=True, samesite="strict", secure=request.url.scheme == "https")
         return response
 
-    def read_key_id(request):
-        key_id = sessions.key_id(request)
-        if key_id is None:
+    def read_session(request: Request) -> ReadSession:
+        session = sessions.read(request)
+        if session is None:
             raise HTTPException(401, "Invalid session")
-        return key_id
+        return session
 
     @app.get("/runs")
     async def runs(request: Request):
-        result = await db.list_runs(pool, read_key_id(request))
+        session = read_session(request)
+        result = await db.list_runs(pool, session.key_id, session.digest)
         if result is None:
             raise HTTPException(401, "Invalid session")
         return result
 
     @app.get("/runs/{run_id}")
     async def run(request: Request, run_id: UUID):
-        return checked_page(await db.run_page(pool, read_key_id(request), run_id))
+        session = read_session(request)
+        return checked_page(await db.run_page(pool, session.key_id, session.digest, run_id))
 
     @app.get("/runs/{run_id}/access")
     async def access(request: Request, run_id: UUID):
-        checked_page(await db.run_page(pool, read_key_id(request), run_id, limit=0))
+        session = read_session(request)
+        checked_page(await db.run_page(pool, session.key_id, session.digest, run_id, limit=0))
         return Response(status_code=204)
 
     @app.post("/runs/{run_id}/metrics")
@@ -168,8 +182,12 @@ def create_app(settings=None):
     @app.get("/runs/{run_id}/events")
     async def events(request: Request, run_id: UUID):
         cursor = stream_cursor(request)
-        key_id = read_key_id(request)
-        initial = checked_page(await db.run_page(pool, key_id, run_id, cursor, settings.page_size))
+        session = read_session(request)
+        ended = session_ends.setdefault(session.digest, asyncio.Event())
+        initial = checked_page(await db.run_page(pool, session.key_id, session.digest, run_id,
+                                                 cursor, settings.page_size))
+        if ended.is_set():
+            raise HTTPException(401, "Invalid session")
         if cursor > initial["last_seq"]:
             raise HTTPException(400, "Invalid event cursor")
 
@@ -178,15 +196,23 @@ def create_app(settings=None):
             page = initial
             yield ServerSentEvent(retry=1000)
             while page is not None and page["id"] is not None:
-                if sessions.key_id(request) is None:
+                if ended.is_set() or datetime.now(UTC) >= session.expires_at:
                     return
                 for point in page["points"]:
+                    if ended.is_set():
+                        return
                     yield JSONServerSentEvent(data=point, event="metric", id=str(point["seq"]))
                     after = point["seq"]
                 if not page["points"]:
-                    await asyncio.sleep(settings.poll_seconds)
+                    try:
+                        async with asyncio.timeout(settings.poll_seconds):
+                            await ended.wait()
+                        return
+                    except TimeoutError:
+                        pass
                 try:
-                    page = await db.run_page(pool, key_id, run_id, after, settings.page_size)
+                    page = await db.run_page(pool, session.key_id, session.digest, run_id,
+                                             after, settings.page_size)
                 except (Error, PoolTimeout) as exc:
                     log.warning("Stream read interrupted (%s)", type(exc).__name__)
                     return

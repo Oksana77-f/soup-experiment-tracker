@@ -35,6 +35,8 @@ The sender uses `Authorization: Bearer <write_key>` and posts JSON to `POST /run
 
 Read keys are exchanged for an expiring cookie at `POST /api/session`. The UI uses `GET /runs`, `GET /runs/{id}` and `GET /runs/{id}/events?after=0`. The app uses one active read key and one active write key per project.
 
+Signing out revokes the presented session in PostgreSQL, closes its local SSE streams and clears the cookie. Sessions issued independently under the same read key remain valid. Browser tabs recheck access after a sign-in or sign-out in another tab. Older cookies remain readable until their original expiry or revocation.
+
 ## Inspect batch write timings
 
 Set `SOUP_LOG_POST_TIMINGS=1` for a local measurement run. This enables an internal JSON log for authenticated, valid batches that reach the write path.

@@ -1,0 +1,85 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_____________ test_logout_revokes_captured_session_and_open_stream _____________
+
+settings = Settings(static_dir=PosixPath('frontend/dist'), session_seconds=28800, poll_seconds=0.05, send_timeout=3, page_size=100, log_post_timings=False)
+
+    async def test_logout_revokes_captured_session_and_open_stream(settings):
+        app = create_app(replace(settings, poll_seconds=Settings.poll_seconds))
+        async with live_server(app) as url:
+            target = await seed(settings.database_url)
+            async with httpx.AsyncClient(base_url=url, timeout=5) as owner, \
+                    httpx.AsyncClient(base_url=url, timeout=5) as peer:
+                await login(owner, target)
+                await login(peer, target)
+                captured = {"Cookie": f"{COOKIE}={owner.cookies[COOKIE]}"}
+                assert (await post(owner, target, batch(point(1)))).status_code == 200
+                path = f"/runs/{target.run}"
+                async with owner.stream("GET", path + "/events") as response:
+                    assert response.status_code == 200
+                    messages = frames(response)
+                    assert (await anext(messages))["id"] == "1"
+                    assert (await owner.post("/api/session/logout", headers={"Origin": url})).status_code == 204
+                    assert (await post(owner, target, batch(point(2)))).status_code == 200
+>                   with pytest.raises(StopAsyncIteration):
+E                   Failed: DID NOT RAISE <class 'StopAsyncIteration'>
+
+tests/test_api.py:221: Failed
+______________________ test_logout_revokes_legacy_cookie _______________________
+
+api = (<fastapi.applications.FastAPI object at 0x7a5ef1c25790>, <httpx.AsyncClient object at 0x7a5ef1c25ca0>)
+settings = Settings(static_dir=PosixPath('frontend/dist'), session_seconds=28800, poll_seconds=0.05, send_timeout=3, page_size=100, log_post_timings=False)
+
+    async def test_logout_revokes_legacy_cookie(api, settings):
+        _, client = api
+        target = await seed(settings.database_url)
+        [key] = await query(settings.database_url,
+                            "SELECT id FROM api_keys WHERE project_id = %s AND scope = 'read'", (target.project,))
+        signer = URLSafeTimedSerializer(settings.session_secret, salt="soup-read-v1")
+        captured = {"Cookie": f"{COOKIE}={signer.dumps(str(key['id']))}"}
+        assert (await client.get("/runs", headers=captured)).status_code == 200
+        assert (await client.post("/api/session/logout",
+                                  headers={**captured, "Origin": "http://tracker.test"})).status_code == 204
+>       assert (await client.get("/runs", headers=captured)).status_code == 401
+E       assert 200 == 401
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/test_api.py:244: AssertionError
+________________ test_logout_clears_run_and_list_in_other_tabs _________________
+
+settings = Settings(static_dir=PosixPath('frontend/dist'), session_seconds=28800, poll_seconds=0.05, send_timeout=3, page_size=100, log_post_timings=False)
+browser = <Browser type=<BrowserType name=chromium executable_path=/mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/soup-browsers/chromium-1208/chrome-linux64/chrome> version=145.0.7632.6>
+
+    async def test_logout_clears_run_and_list_in_other_tabs(settings, browser):
+        async with live_server(create_app(settings)) as url:
+            target = await seed(settings.database_url)
+            async with httpx.AsyncClient(base_url=url) as sender:
+                assert (await post(sender, target, batch(point(1, name="private_loss")))).status_code == 200
+            async with await browser.new_context() as context:
+                run_tab = await context.new_page()
+                await sign_in(run_tab, url, target)
+                await expect(run_tab.get_by_text("private_loss")).to_be_visible()
+    
+                list_tab = await context.new_page()
+                await list_tab.goto(url)
+                await expect(list_tab.get_by_role("heading", name="Training runs")).to_be_visible()
+    
+                logout_tab = await context.new_page()
+                await logout_tab.goto(url)
+                await logout_tab.get_by_role("button", name="Sign out").click()
+    
+                for page in (run_tab, list_tab):
+>                   await expect(page.get_by_role("heading", name="Sign in")).to_be_visible()
+E                   AssertionError: Locator expected to be visible
+E                   Actual value: None
+E                   Error: element(s) not found 
+E                   Call log:
+E                     - Expect "to_be_visible" with timeout 5000ms
+E                     - waiting for get_by_role("heading", name="Sign in")
+
+tests/test_stream.py:182: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_api.py::test_logout_revokes_captured_session_and_open_stream
+FAILED tests/test_api.py::test_logout_revokes_legacy_cookie - assert 200 == 401
+FAILED tests/test_stream.py::test_logout_clears_run_and_list_in_other_tabs - ...
+3 failed, 17 deselected in 35.70s

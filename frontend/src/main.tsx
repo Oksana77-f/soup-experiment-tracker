@@ -4,6 +4,17 @@ import { request, RequestError, type Project } from "./api";
 import { useRun } from "./useRun";
 import "./style.css";
 
+const SESSION_CHANGE_KEY = "soup-session-change";
+
+function notifySessionChange(): void {
+  try {
+    window.localStorage.setItem(SESSION_CHANGE_KEY, "changed");
+    window.localStorage.removeItem(SESSION_CHANGE_KEY);
+  } catch {
+    // Storage may be disabled. Server revocation still protects requests and streams.
+  }
+}
+
 function SignIn({ onSuccess }: { onSuccess: () => Promise<void> }) {
   const [key, setKey] = useState("");
   const [error, setError] = useState("");
@@ -16,6 +27,7 @@ function SignIn({ onSuccess }: { onSuccess: () => Promise<void> }) {
       await request("/api/session", {
         method: "POST", headers: { Authorization: "Bearer " + key.trim() },
       });
+      notifySessionChange();
       setKey("");
       await onSuccess();
     } catch (failure) {
@@ -91,6 +103,7 @@ function App() {
   async function logout() {
     try {
       await request("/api/session/logout", { method: "POST" });
+      notifySessionChange();
       window.location.replace("/");
     } catch {
       setError("Could not sign out. Try again.");
@@ -117,6 +130,12 @@ function App() {
     </main>
   </>;
 }
+
+window.addEventListener("storage", event => {
+  if (event.key !== SESSION_CHANGE_KEY || event.newValue !== "changed") return;
+  document.documentElement.classList.add("suspended");
+  window.location.reload();
+});
 
 // A browser-restored page must revalidate its session before showing old data.
 window.addEventListener("pagehide", event => {

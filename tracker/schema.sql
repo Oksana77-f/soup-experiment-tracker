@@ -13,6 +13,12 @@ CREATE TABLE IF NOT EXISTS api_keys (
 CREATE UNIQUE INDEX IF NOT EXISTS one_active_key_per_scope
     ON api_keys (project_id, scope) WHERE revoked_at IS NULL;
 
+CREATE TABLE IF NOT EXISTS revoked_sessions (
+    digest text PRIMARY KEY,
+    expires_at timestamptz NOT NULL
+);
+CREATE INDEX IF NOT EXISTS revoked_sessions_expiry ON revoked_sessions (expires_at);
+
 CREATE TABLE IF NOT EXISTS runs (
     id uuid PRIMARY KEY,
     project_id uuid NOT NULL REFERENCES projects(id),

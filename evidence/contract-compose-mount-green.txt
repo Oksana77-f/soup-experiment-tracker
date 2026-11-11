@@ -1,0 +1,7 @@
+...........Rotation commit to observed SSE EOF: 0.945 s (idle poll 1 s)
+..Writer exited with -9 before COMMIT; HTTP response lost. Points before/after retry: 0/2.
+.Writer exited with -9 after COMMIT; HTTP response lost. Points before/after retry: 2/2.
+...Chromium history navigation: {'restored': False, 'reasons': ['masked', 'response-cache-control-no-store', 'response-cache-control-no-store-with-js-network-request']}
+...ERROR:    ASGI callable returned without completing response.
+..
+22 passed in 25.62s

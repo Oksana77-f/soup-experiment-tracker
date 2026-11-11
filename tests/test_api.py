@@ -7,11 +7,13 @@ from uuid import uuid4
 import httpx
 import psycopg
 import pytest
+from itsdangerous import URLSafeTimedSerializer
 from psycopg.rows import dict_row
 
 from tracker import db
 from tracker.admin import rotate_key
 from tracker.app import create_app, timing_log
+from tracker.auth import COOKIE
 from tracker.models import MAX_BODY_BYTES, MAX_INTEGER, Batch
 from tracker.send import post_batch
 from tracker.settings import Settings
@@ -184,7 +186,11 @@ async def test_project_isolation_and_csrf(api, settings):
         assert foreign.status_code == missing.status_code == 404
         assert foreign.content == missing.content
         assert foreign.headers["cache-control"] == "no-store"
-    assert (await post(client, b, batch(point(2)), key=a.write)).status_code == 404
+    payload = batch(point(2))
+    foreign_write = await post(client, b, payload, key=a.write)
+    missing_write = await client.post(f"/runs/{uuid4()}/metrics", headers=auth(a.write), json=payload)
+    assert foreign_write.status_code == missing_write.status_code == 404
+    assert foreign_write.content == missing_write.content
     assert (await client.post(f"/runs/{a.run}/metrics", json=batch(point(1)))).status_code == 401
     assert (await post(client, a, batch(point(2)), key=a.read)).status_code == 401
     cross_origin = {"Origin": "https://other.invalid"}
@@ -193,6 +199,49 @@ async def test_project_isolation_and_csrf(api, settings):
     assert (await client.post("/api/session/logout", headers=cross_origin)).status_code == 403
     assert (await client.post("/api/session/logout")).status_code == 403
     assert (await client.get("/runs")).json()["project"] == a.name
+
+
+async def test_logout_revokes_captured_session_and_open_stream(settings):
+    app = create_app(replace(settings, poll_seconds=Settings.poll_seconds))
+    async with live_server(app) as url:
+        target = await seed(settings.database_url)
+        async with httpx.AsyncClient(base_url=url, timeout=5) as owner, \
+                httpx.AsyncClient(base_url=url, timeout=5) as peer:
+            await login(owner, target)
+            await login(peer, target)
+            captured = {"Cookie": f"{COOKIE}={owner.cookies[COOKIE]}"}
+            assert (await post(owner, target, batch(point(1)))).status_code == 200
+            path = f"/runs/{target.run}"
+            async with owner.stream("GET", path + "/events") as response:
+                assert response.status_code == 200
+                messages = frames(response)
+                assert (await anext(messages))["id"] == "1"
+                assert (await owner.post("/api/session/logout", headers={"Origin": url})).status_code == 204
+                assert (await post(owner, target, batch(point(2)))).status_code == 200
+                with pytest.raises(StopAsyncIteration):
+                    await asyncio.wait_for(anext(messages), 2)
+            assert (await peer.get(path)).status_code == 200
+            await login(owner, target)
+            assert (await owner.get(path)).status_code == 200
+
+    async with live_server(create_app(settings)) as url:
+        async with httpx.AsyncClient(base_url=url, timeout=5) as restarted:
+            for protected in ("/runs", path, path + "/access", path + "/events"):
+                assert (await restarted.get(protected, headers=captured)).status_code == 401
+            assert (await restarted.post("/api/session/logout", headers={**captured, "Origin": url})).status_code == 204
+
+
+async def test_logout_revokes_legacy_cookie(api, settings):
+    _, client = api
+    target = await seed(settings.database_url)
+    [key] = await query(settings.database_url,
+                        "SELECT id FROM api_keys WHERE project_id = %s AND scope = 'read'", (target.project,))
+    signer = URLSafeTimedSerializer(settings.session_secret, salt="soup-read-v1")
+    captured = {"Cookie": f"{COOKIE}={signer.dumps(str(key['id']))}"}
+    assert (await client.get("/runs", headers=captured)).status_code == 200
+    assert (await client.post("/api/session/logout",
+                              headers={**captured, "Origin": "http://tracker.test"})).status_code == 204
+    assert (await client.get("/runs", headers=captured)).status_code == 401
 
 
 async def test_concurrent_batches_share_one_point(api, settings, monkeypatch):

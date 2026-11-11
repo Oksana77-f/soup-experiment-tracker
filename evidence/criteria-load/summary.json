@@ -1,0 +1,261 @@
+{
+  "1": {
+    "driver": {
+      "attempted_metrics": 30000,
+      "stored_metrics": 30000,
+      "database_mismatches": 0,
+      "subscriber_missing": 0,
+      "subscriber_duplicates": 0,
+      "subscriber_mismatches": 0,
+      "dom_samples": 600,
+      "write_window_s": 59.563,
+      "transport_retries": 1,
+      "post": {
+        "p50_ms": 313.52,
+        "p95_ms": 524.8,
+        "p99_ms": 597.09
+      },
+      "schedule_lag": {
+        "p50_ms": 49.07,
+        "p95_ms": 95.52,
+        "p99_ms": 109.82
+      },
+      "post_to_sse": {
+        "p50_ms": 840.85,
+        "p95_ms": 1131.45,
+        "p99_ms": 1212.55
+      },
+      "post_to_dom": {
+        "p50_ms": 604.1,
+        "p95_ms": 1449.26,
+        "p99_ms": 1524.92
+      },
+      "errors": [],
+      "verdict": "SHIP"
+    },
+    "sse": {
+      "loop_probe_ms": 20.0,
+      "loop_delay": {
+        "samples": 4526,
+        "p50_upper_ms": 0.5,
+        "p95_upper_ms": 2,
+        "p99_upper_ms": 3,
+        "max_ms": 34.047375
+      },
+      "page_read": {
+        "samples": 6044,
+        "p50_upper_ms": 1.5,
+        "p95_upper_ms": 8,
+        "p99_upper_ms": 12,
+        "max_ms": 109.585794
+      },
+      "data_send": {
+        "samples": 30000,
+        "p50_upper_ms": 0.05,
+        "p95_upper_ms": 0.1,
+        "p99_upper_ms": 0.2,
+        "max_ms": 4.025234
+      }
+    },
+    "post_outcomes": {
+      "accepted": 3000
+    },
+    "post": {
+      "all": {
+        "total_ms": {
+          "p99": 163.955,
+          "max": 256.533
+        },
+        "pool_wait_ms": {
+          "p99": 90.476,
+          "max": 204.83
+        },
+        "run_lock_ms": {
+          "p99": 2.027,
+          "max": 10.975
+        },
+        "commit_ms": {
+          "p99": 8.65,
+          "max": 30.749
+        },
+        "rest_ms": {
+          "p99": 62.22099999999999,
+          "max": 85.47400000000002
+        }
+      },
+      "after_first_50_completions": {
+        "total_ms": {
+          "p99": 26.895,
+          "max": 49.052
+        },
+        "pool_wait_ms": {
+          "p99": 0.078,
+          "max": 0.349
+        },
+        "run_lock_ms": {
+          "p99": 1.39,
+          "max": 10.975
+        },
+        "commit_ms": {
+          "p99": 9.049,
+          "max": 30.749
+        },
+        "rest_ms": {
+          "p99": 23.515,
+          "max": 46.609
+        }
+      }
+    },
+    "top_30_completion_range": [
+      21,
+      50
+    ],
+    "top_30_dominant_ms_component": {
+      "pool_wait_ms": 30
+    },
+    "top_30_median_pool_share": 0.637,
+    "resources": {
+      "app": {
+        "samples": 16,
+        "max_cpu_percent": 44.78,
+        "max_memory_mib": 47.04
+      },
+      "db": {
+        "samples": 17,
+        "max_cpu_percent": 20.41,
+        "max_memory_mib": 82.7
+      }
+    },
+    "warnings_errors": []
+  },
+  "5": {
+    "driver": {
+      "attempted_metrics": 30000,
+      "stored_metrics": 30000,
+      "database_mismatches": 0,
+      "subscriber_missing": 0,
+      "subscriber_duplicates": 0,
+      "subscriber_mismatches": 0,
+      "dom_samples": 600,
+      "write_window_s": 59.781,
+      "transport_retries": 0,
+      "post": {
+        "p50_ms": 500.51,
+        "p95_ms": 1158.41,
+        "p99_ms": 2083.34
+      },
+      "schedule_lag": {
+        "p50_ms": 69.25,
+        "p95_ms": 775.89,
+        "p99_ms": 2147.06
+      },
+      "post_to_sse": {
+        "p50_ms": 1063.78,
+        "p95_ms": 1801.85,
+        "p99_ms": 2628.84
+      },
+      "post_to_dom": {
+        "p50_ms": 1282.6,
+        "p95_ms": 2126.75,
+        "p99_ms": 3503.38
+      },
+      "errors": [],
+      "verdict": "DON'T SHIP"
+    },
+    "sse": {
+      "loop_probe_ms": 20.0,
+      "loop_delay": {
+        "samples": 4297,
+        "p50_upper_ms": 0.75,
+        "p95_upper_ms": 5,
+        "p99_upper_ms": 8,
+        "max_ms": 81.165053
+      },
+      "page_read": {
+        "samples": 28192,
+        "p50_upper_ms": 3,
+        "p95_upper_ms": 24,
+        "p99_upper_ms": 48,
+        "max_ms": 190.301881
+      },
+      "data_send": {
+        "samples": 150000,
+        "p50_upper_ms": 0.05,
+        "p95_upper_ms": 0.1,
+        "p99_upper_ms": 0.2,
+        "max_ms": 1.630933
+      }
+    },
+    "post_outcomes": {
+      "accepted": 3000
+    },
+    "post": {
+      "all": {
+        "total_ms": {
+          "p99": 239.542,
+          "max": 371.377
+        },
+        "pool_wait_ms": {
+          "p99": 130.376,
+          "max": 182.618
+        },
+        "run_lock_ms": {
+          "p99": 8.213,
+          "max": 50.765
+        },
+        "commit_ms": {
+          "p99": 11.198,
+          "max": 34.595
+        },
+        "rest_ms": {
+          "p99": 145.072,
+          "max": 308.298
+        }
+      },
+      "after_first_50_completions": {
+        "total_ms": {
+          "p99": 194.889,
+          "max": 370.517
+        },
+        "pool_wait_ms": {
+          "p99": 42.067,
+          "max": 178.421
+        },
+        "run_lock_ms": {
+          "p99": 8.226,
+          "max": 50.765
+        },
+        "commit_ms": {
+          "p99": 10.667,
+          "max": 34.595
+        },
+        "rest_ms": {
+          "p99": 132.503,
+          "max": 308.298
+        }
+      }
+    },
+    "top_30_completion_range": [
+      35,
+      793
+    ],
+    "top_30_dominant_ms_component": {
+      "rest_ms": 13,
+      "pool_wait_ms": 17
+    },
+    "top_30_median_pool_share": 0.494,
+    "resources": {
+      "app": {
+        "samples": 16,
+        "max_cpu_percent": 82.25,
+        "max_memory_mib": 65.16
+      },
+      "db": {
+        "samples": 16,
+        "max_cpu_percent": 36.98,
+        "max_memory_mib": 83.73
+      }
+    },
+    "warnings_errors": []
+  }
+}

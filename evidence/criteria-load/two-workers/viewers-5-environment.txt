@@ -1,0 +1,26 @@
+4233880686f54c54bfc75e62e64c5e78930eb46a
+## main...origin/main [ahead 5]
+ M PRD.md
+ M README.md
+ M docs/design.md
+ M docs/results.md
+?? evidence/criteria-load/
+?? evidence/sse-diagnostics-unit.txt
+?? evidence/sse-timeout-regression.txt
+bbbb54c2b6d3741b4090d13f9046f1dedb27b6cc
+88391400024200d6f2742c79a41c19c8c47e3dc4
+84cde2e33fd444d7cf9878c33623224b9732d3b2
+App image: sha256:ad52a8d95d361b2fa75235436b1904b6e2fb4ef834707981242a0c9fe94478bc
+PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+Linux 6.6.87.2-microsoft-standard-WSL2
+12
+               total        used        free      shared  buff/cache   available
+Mem:           5.8Gi       1.6Gi       1.3Gi        50Mi       3.2Gi       4.2Gi
+Swap:          4.0Gi       524Ki       4.0Gi
+Native WSL driver and Compose share one physical host. Fresh database and app.
+Both timing flags enabled. 50 runs, 10 points/run/s, 60 s, 5 viewers/run.
+Two Uvicorn workers; independent database pools: each 1–16 connections, aggregate capacity up to 32.
+Single app bootstrap populates a fresh private signing-secret volume before worker startup. Logs include PID.
+DB client connections immediately before driver: 2
+Driver exit status: 1
+DB client connections immediately after driver: 32

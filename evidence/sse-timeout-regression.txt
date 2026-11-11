@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.0.2, pluggy-1.7.0 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /app
+configfile: pytest.ini
+testpaths: tests
+plugins: asyncio-1.3.0, anyio-4.16.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 20 items
+
+tests/test_api.py::test_batches_retry_overlap_conflict_and_scope PASSED
+tests/test_api.py::test_batch_write_timings_measure_separate_phases PASSED
+tests/test_api.py::test_post_timing_log_preserves_batch_outcomes[disabled] PASSED
+tests/test_api.py::test_post_timing_log_preserves_batch_outcomes[enabled] PASSED
+tests/test_api.py::test_batch_input_limits_reject_without_side_effects PASSED
+tests/test_api.py::test_invalid_sse_cursor_is_rejected_before_opening_stream PASSED
+tests/test_api.py::test_failure_after_insert_rolls_back_receipt_points_and_cursor PASSED
+tests/test_api.py::test_project_isolation_and_csrf PASSED
+tests/test_api.py::test_concurrent_batches_share_one_point PASSED
+tests/test_api.py::test_rotation_stops_open_stream_and_old_keys Rotation commit to observed SSE EOF: 0.949 s (idle poll 1 s)
+PASSED
+tests/test_api.py::test_sender_keeps_exact_body_on_retry_and_stops_on_409 PASSED
+tests/test_crash.py::test_writer_killed_at_commit_boundary[before-commit] Writer exited with -9 before COMMIT; HTTP response lost. Points before/after retry: 0/2.
+PASSED
+tests/test_crash.py::test_writer_killed_at_commit_boundary[after-commit-before-response] Writer exited with -9 after COMMIT; HTTP response lost. Points before/after retry: 2/2.
+PASSED
+tests/test_stream.py::test_browser_matches_input_and_database_after_disconnect[native-reconnect] PASSED
+tests/test_stream.py::test_browser_matches_input_and_database_after_disconnect[closed-after-502] PASSED
+tests/test_stream.py::test_same_browser_does_not_reuse_previous_project_data PASSED
+ERROR:    ASGI callable returned without completing response.
+tests/test_stream.py::test_browser_recovers_across_application_restart PASSED
+tests/test_stream.py::test_stalled_send_times_out_and_allows_replay[data] PASSED
+tests/test_stream.py::test_stalled_send_times_out_and_allows_replay[heartbeat] PASSED
+tests/test_stream.py::test_stalled_send_times_out_and_allows_replay[final] PASSED
+
+============================= 20 passed in 24.92s ==============================

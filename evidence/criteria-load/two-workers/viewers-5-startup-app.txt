@@ -1,0 +1,8 @@
+INFO:     [pid=1] Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     [pid=1] Started parent process [1]
+INFO:     [pid=9] Started server process [9]
+INFO:     [pid=9] Waiting for application startup.
+INFO:     [pid=10] Started server process [10]
+INFO:     [pid=10] Waiting for application startup.
+INFO:     [pid=9] Application startup complete.
+INFO:     [pid=10] Application startup complete.

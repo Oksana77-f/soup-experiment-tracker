@@ -2,7 +2,7 @@
 %“Œ‹ž ReportLab Generated PDF document (opensource)
 1 0 obj
 <<
-/F1 2 0 R /F2 4 0 R /F3 5 0 R
+/F1 2 0 R /F2 4 0 R /F3 5 0 R /F4 10 0 R
 >>
 endobj
 2 0 obj
@@ -30,84 +30,103 @@ endobj
 6 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/tree/aee59f3)
->> /Border [ 0 0 0 ] /Rect [ 282.672 691.7898 418.521 704.3898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/tree/92c13ae)
+>> /Border [ 0 0 0 ] /Rect [ 115.197 691.7898 237.039 704.3898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 7 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/results.md#measured-load)
->> /Border [ 0 0 0 ] /Rect [ 427.278 691.7898 490.887 704.3898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/criteria-load/viewers-1-driver.txt)
+>> /Border [ 0 0 0 ] /Rect [ 245.796 691.7898 295.3875 704.3898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 8 0 obj
 <<
 /A <<
 /S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/scripts/load.py)
->> /Border [ 0 0 0 ] /Rect [ 302.5275 583.2898 355.0485 595.8898 ] /Subtype /Link /Type /Annot
+>> /Border [ 0 0 0 ] /Rect [ 304.26 583.2898 332.253 595.8898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 9 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/step14-summary.json)
->> /Border [ 0 0 0 ] /Rect [ 381.8865 514.2898 422.154 526.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/browser-stage.txt)
+>> /Border [ 0 0 0 ] /Rect [ 341.01 583.2898 406.383 595.8898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 10 0 obj
 <<
-/A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/browser-stage.txt)
->> /Border [ 0 0 0 ] /Rect [ 430.911 514.2898 511.446 526.8898 ] /Subtype /Link /Type /Annot
+/BaseFont /Symbol /Name /F4 /Subtype /Type1 /Type /Font
 >>
 endobj
 11 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/step15-summary.json)
->> /Border [ 0 0 0 ] /Rect [ 100.0245 445.2898 199.7745 457.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/criteria-load/viewers-5-driver.txt)
+>> /Border [ 0 0 0 ] /Rect [ 267.5205 514.2898 317.112 526.8898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 12 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/fanout-sql.txt)
->> /Border [ 0 0 0 ] /Rect [ 257.577 376.2898 328.7775 388.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/criteria-load/summary.json)
+>> /Border [ 0 0 0 ] /Rect [ 325.869 514.2898 401.721 526.8898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 13 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_stream.py)
->> /Border [ 0 0 0 ] /Rect [ 367.857 242.2898 431.4555 254.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/criteria-load/two-workers/viewers-5-summary.json)
+>> /Border [ 0 0 0 ] /Rect [ 178.218 459.7898 243.57 472.3898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 14 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_api.py)
->> /Border [ 0 0 0 ] /Rect [ 477.8415 187.7898 519.8625 200.3898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/results.md#integrated-runtime-measurement)
+>> /Border [ 0 0 0 ] /Rect [ 138.549 390.7898 196.3095 403.3898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 15 0 obj
 <<
 /A <<
 /S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_stream.py)
->> /Border [ 0 0 0 ] /Rect [ 51 173.2898 114.5985 185.8898 ] /Subtype /Link /Type /Annot
+>> /Border [ 0 0 0 ] /Rect [ 51 296.7898 114.5985 309.3898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 16 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/design.md)
->> /Border [ 0 0 0 ] /Rect [ 298.422 118.7898 371.376 131.3898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_replay_boundaries.py)
+>> /Border [ 0 0 0 ] /Rect [ 123.3555 296.7898 210.894 309.3898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 17 0 obj
 <<
-/Annots [ 3 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 
-  15 0 R 16 0 R ] /Contents 31 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 30 0 R /Resources <<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_api.py)
+>> /Border [ 0 0 0 ] /Rect [ 150.792 213.2898 192.813 225.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+18 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/criteria-final.txt)
+>> /Border [ 0 0 0 ] /Rect [ 201.57 213.2898 285.0135 225.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+19 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/design.md)
+>> /Border [ 0 0 0 ] /Rect [ 363.207 173.2898 436.161 185.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+20 0 obj
+<<
+/Annots [ 3 0 R 6 0 R 7 0 R 8 0 R 9 0 R 11 0 R 12 0 R 13 0 R 14 0 R 15 0 R 
+  16 0 R 17 0 R 18 0 R 19 0 R ] /Contents 38 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 37 0 R /Resources <<
 /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
 >> /Rotate 0 
   /Trans <<
@@ -115,72 +134,101 @@ endobj
 >> /Type /Page
 >>
 endobj
-18 0 obj
+21 0 obj
 <<
 /A <<
 /S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker)
 >> /Border [ 0 0 0 ] /Rect [ 51 28 197.547 41 ] /Subtype /Link /Type /Annot
 >>
 endobj
-19 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/nocache-check.txt)
->> /Border [ 0 0 0 ] /Rect [ 144.9645 737.7898 269.8725 750.3898 ] /Subtype /Link /Type /Annot
->>
-endobj
-20 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/red-replay.txt)
->> /Border [ 0 0 0 ] /Rect [ 172 653.2498 241.549 664.8898 ] /Subtype /Link /Type /Annot
->>
-endobj
-21 0 obj
-<<
-/A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/red-concurrent-write.txt)
->> /Border [ 0 0 0 ] /Rect [ 441.563 600.2498 511.112 611.8898 ] /Subtype /Link /Type /Annot
->>
-endobj
 22 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_stream.py)
->> /Border [ 0 0 0 ] /Rect [ 339.6839 547.2498 389.28 558.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/criteria-final.txt)
+>> /Border [ 0 0 0 ] /Rect [ 377.0865 737.7898 456.477 750.3898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 23 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_crash.py)
->> /Border [ 0 0 0 ] /Rect [ 286.2951 481.2498 335.348 492.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/nocache-check.txt)
+>> /Border [ 0 0 0 ] /Rect [ 465.234 737.7898 523.5825 750.3898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 24 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_api.py)
->> /Border [ 0 0 0 ] /Rect [ 361.7708 415.2498 416.2266 426.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/nocache-check.txt)
+>> /Border [ 0 0 0 ] /Rect [ 51 723.2898 73.176 735.8898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 25 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/results.md)
->> /Border [ 0 0 0 ] /Rect [ 221.4045 252.2898 268.665 264.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/red-replay.txt)
+>> /Border [ 0 0 0 ] /Rect [ 489.1706 638.7498 529.6099 650.3898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 26 0 obj
 <<
 /A <<
-/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/ai-usage-ru.md)
->> /Border [ 0 0 0 ] /Rect [ 219.0735 183.2898 266.3445 195.8898 ] /Subtype /Link /Type /Annot
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/red-replay.txt)
+>> /Border [ 0 0 0 ] /Rect [ 172 625.7498 198.4131 637.3898 ] /Subtype /Link /Type /Annot
 >>
 endobj
 27 0 obj
 <<
-/Annots [ 18 0 R 19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R ] /Contents 32 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 30 0 R /Resources <<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/red-concurrent-write.txt)
+>> /Border [ 0 0 0 ] /Rect [ 197.8699 572.7498 267.4189 584.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+28 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_tcp_backpressure.py)
+>> /Border [ 0 0 0 ] /Rect [ 172 506.7498 209.733 518.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+29 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_crash.py)
+>> /Border [ 0 0 0 ] /Rect [ 324.0572 453.7498 373.1101 465.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+30 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_api.py)
+>> /Border [ 0 0 0 ] /Rect [ 441.563 400.7498 525.6814 412.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+31 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_api.py)
+>> /Border [ 0 0 0 ] /Rect [ 172 387.7498 192.4864 399.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+32 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/results.md)
+>> /Border [ 0 0 0 ] /Rect [ 133.278 239.2898 180.5385 251.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+33 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/ai-usage-ru.md)
+>> /Border [ 0 0 0 ] /Rect [ 51 170.2898 98.271 182.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+34 0 obj
+<<
+/Annots [ 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R 26 0 R 27 0 R 28 0 R 29 0 R 30 0 R 
+  31 0 R 32 0 R 33 0 R ] /Contents 39 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 37 0 R /Resources <<
 /Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
 >> /Rotate 0 
   /Trans <<
@@ -188,81 +236,88 @@ endobj
 >> /Type /Page
 >>
 endobj
-28 0 obj
+35 0 obj
 <<
-/PageMode /UseNone /Pages 30 0 R /Type /Catalog
+/PageMode /UseNone /Pages 37 0 R /Type /Catalog
 >>
 endobj
-29 0 obj
+36 0 obj
 <<
-/Author (\(anonymous\)) /CreationDate (D:20261112003936+05'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20261112003936+05'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+/Author (\(anonymous\)) /CreationDate (D:20261112030251+05'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20261112030251+05'00') /Producer (ReportLab PDF Library - \(opensource\)) 
   /Subject (\(unspecified\)) /Title (Soup Experiment Tracker - Submission note) /Trapped /False
 >>
 endobj
-30 0 obj
+37 0 obj
 <<
-/Count 2 /Kids [ 17 0 R 27 0 R ] /Type /Pages
+/Count 2 /Kids [ 20 0 R 34 0 R ] /Type /Pages
 >>
 endobj
-31 0 obj
+38 0 obj
 <<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 2740
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2480
 >>
 stream
-Gatm<gN)"?(4GpYm$C\6.8Y+P!p2)d3M(8#kJ4(0\8&#U%<O/#Q#=^2q>+7+FTLBU-RWn6CnT>U[eAEj'9J9I_#9nf7.1o`k#4N28;f>/@rG&!$i7@mo;8cWS!#_$-K-3sD\`Os18@)6F]M<Yco@nmipk[=LC(`<BR](I&cX(/9#_N/+YP"F3GU4jS,qN:[Kc5Ed/&@kU4=">%5)S#.)]XO>/.>R/k>K8PXac?W(*$al&@O'C%7`0s*/cU1kR/AdbPQV*W'i"A7q(D#RQ'Y3Bls1ff06KAIqSQ(f:JWk+qZ2kYjA$9Ab+(.J,WXcm<B[LPPN,pQ-/MLNFO`':ROr>Zn+L6%uK&O[!4CF3gap3]los^>XnbZY^C'At/,hEYu,!cT;Zhr]%Ze[5M!$-08%Wg;k"?3Y`Nt7^#f=4m/!/I='q'/dk7F/4gSb&k+:*V")a4Oun>N36B[hOCB>&(MR^p7uau/M$g_60b-gXMTU)Q\DL?HOk#O]Yp)Jj:R61XggjTi4F3p+D0+#qB'NF&Y9M.<nqXsJ;g[=q<Eia1[&V;CV4s.(lR\'DcVK/G$t8L9n6QordFi2IoZjc&ZPi.`V8,`UlS)$%HOBXZ,</H.'B7OH(ChmXi`6d5o"?I4U\I!iLO)[!.98q(gk,o-G,n=NHKTnK9I%$UC*b<-\Z-3pjB"ktM']coX=dMMW]b&a8JQ4)Oh9SoetKoA4M8pm\KQU+*1GTe75XT_Y%g;GGd`VRQ1G\R)N:8p/1bOel5p9,,^P[D(HO&23\#q*0-m]q^23lrL2;TZ'^<>amR[ZCC#DEU[ndXnDk<:Aa2*mRK6$(MV:s)4=U1nWs%.?=<75"^Y$XE@9r`0;=HQ7fg&ntkpKf=$!*.CTq*bQCiP<Sijr#-C0]tsYGgCI6Z*%WdaYqtt<Lj.m4/&YtIBS4ZV*q(O>1P0-0m<R[^\m*fbf[f9_,"BCc5.P8h\r&d3X<%05,ZFuIBG(t!G.Tj1sTt(_u6Nm/2d;RW/s)-MrB,[lck`u19o^S[FnSTT3$g#Nj<A0.TKVk:K8fe+!mj7>Co,0S1)\K/_EZ1Bi_EJPF(\G/WEqNA90SEg7:j@60=Pe/I9@/f,>.A<Dci'-]>eW.0->^A41Fta?_\ma0RK-O)gL'4$XR$,1YDKUcI8.(SJ#ke<<E4_WR$WR-7n3<DGdZL+7>3ENKasisOI5b*!\@Lk9/DJpNAdc96*]M/#Y6H8.TQPo_)qL#)i=)`Q2KlKhI4Hc_YV7t3'*=#?P!F9bXa^^HRY\`t4$I^o<'pbZD$;8q%`,s\0TC[$RDPAFM!(2,:R&Viq<:rUM@FJZpQd'ch$9!!7q7&[9$Proc5@R&`_0;RAaX(q^k3Ohtq'NL$Ff$5T/OR5;^5Qk`iJDQ&86]uI2'ejQ0ge'nOEPCq#ME5,D$m?X^2J<")1LE"232GXMjMp6DjcFhW[eOh;L&#4E:1SmZf>)eb')J=%Pe,d(2`dV\+:mU_&2s]`<F<nN=-kErkIGU<Fb0*%%8KA]6SF;<%Qg+f'YEqrUVN?G/L9eYeNFYeN8hB8+2!`q`p')h=+@c]HWptLdDVONYP>rU`#D4MgmrCX/5]C@N&qf0SfbOR;<5^d/!%C^Lk&@%5u,YU%59(0Fm#Ydl]=a5`[8dV"9:WFUecege4MK#k7@mq;ZMV#j51;rcX"<-44(+YEDMjh)$Wtf@U_<I'udc$*ucHf?S<>CAjWdt8Xk)<rUJO*E'-hl$!e(]hXii9-eGPWIBlraEp&)*mUTL&:2#:4+l.aT@fbZR7kN!"R1^pO;iQ0b989tY].bZhX&0pjB`L>2\-,LZ)fe>&b-Wc=X^^b!cX6g8.$:M/2Ks<Hf/DbN-?A[-Gjm:@A[g*rFNa7p8K6)qb>"Y0"2W\CAlH`)bZC'+=\h;*d;duVN,WN=`Xbr9m-YHS^B0Ekb!;/d>>]4.>VTFOcr!t&Z0@J;o%)n8;W#"NEo\(SZt*b!@c&Ju-c`nH^n8P$Vo2jbZ19S-nYM!EVAo7YbUDTi;X:bF/JLY-</qbC5rjsEV9*$-*Q&[h!>5'-!-TEL\eZ#<KV.L*dM27cOME3_U=pTAd8O$PB>75P@lq!=2Y*;b<E<bX\W[M^rT@;D+\Z4F><4W6TQi^kk=Z4SHe@f&#*@+QN4s(n4N[C>h@I32YZWDZ'puPRB^r+<#WYTRF(_.ViR]Jl<Zf[[[Cf:+SSh`6!Yn3-!as[<\#AAi!"/4[._aqXQ<0-5K%LU+J@qr[,EEb/89kg&!t`*G47E84Y!/mmiq2e+'>1J'Ol=bZ`i]1/f_A6A8ZUCO!%2ul@.NZEorH5XhWd88OaAEE>8`\a*QUR5$NW7g\HPI7nF`sB=3qF^!:VOd9kgq+Dr%:JI^`.[[La`cFSs*ZaMZM8MW(%aXD1ZRh-KT#X_Z\ImPZ?eld(K<]BOG)()A`&Pu$&Dd(&MX\mX2rd.mo>>B,!$&H)[_'-"P+NR>s^.pR.,FOd<1jIen^b%EWXpB&th[9mhLP6sH^8*'\So=%fa8+lk\'^[+?gB\.Lh`GL(>uP>dh7.guF,I:?C/*,2QrY(8!f$bK)d.^I;Zq&@\b]i_dniGR5"3p\N]CM2lc"8AG4EtFmVYhu/K;,nffYZ`78gFYft+Fuq*6D&r)K*F;$/.IX,Rch!$>-iEL`5&.9iM+_0t!&I<8"WJ-CZf`$9b%jh;pHpfd[*M5P261Yr28<Qj_V?RhUjN8KYe#A'[:rrLEo@F5~>endstream
+Gatm<gN):E&q0LUj<Lu3C*X@WH*c8m*_1IpSq`5MEPt<i'r&^B8m<T-qsX8iklPa4U=Wm:_@@`gnoi=#9L9ZW2tVT`/^`+352Cl+7^QE!3"Es8]V@.'MdR;2k;*HWZUm!5.@<V64IO[-Y8<YeON'"l.3=NPgmmk6:5b#Q*:XOCUWIaAS5:m_Rp@idk2*m-Qo,*;ES1&<o0slT\(&$>E^G]KFKkc*9N;M^pHi&kQ+@s"<[:Jhr^+fCC&+qS:Dh@88N:G1$'-/)n&:E[kp/_h#V=Zg7PL?n_[o\"UM1Deb)jN22I;/EWlBGMVjiL:+\*.?,kVrBOM5fXd^&S.*i$iA(=d0#S5Vn@2PiP,k>2#in7aYI+8PQWn2,sS2@:,(:%eTJN7j,uSVM!qh*03>==Q7m[SjWXb*6q1Ln"ffegd#;GKJIN3Nu$J>1100.PXuQhH0p0V\hBJ3iT4B(i?)iM%]8R@?`Ab+aj9Rs0k;fSAZplT+'$".CmJDm:/J\,\SqYk:PaaU]Fc`3K8dliNPCD=K?UaH*>AMWCj\gS90F?d]1Ag,"h*OcJHJ;@S*DilhfS=R*TJ"*/-Zu`NUOATsQ=Y1r<7I(B[hb.rJjuO,%a)FuVQB3ZIR2.PiSQ;5/6)KhAgW%*3pC''n'E<p:61+=hZY(Ve)_LuuP'-[?aZiCM$kffrQ`)H(58MEPde.PK*lD%aMarM(/,iQ-(bimE72b0`u<<$eBEl<7>d3S=\/SV;DQ$\Qi@\5/ic@/me(E&CRKMku:sng`b:hYKHn6#!-Clok>g!r5H8Yl;&?Ms0+;R+'9C6omgg#pMrGb!K4,1X@M230(R"N_j1r,1WiEk4?T]XfAfNQ=f6SAJ[YKHj-2L4PNoflu@Y_<<1ThIKC!=Yq:"SS,SKN74eaFkU-mWjZ6U^+eFb<%IHPi8WLRedGTtgWO+W+:Y:DNN\^cfJH!;8QOgH*Hi`QSECaI?'gf/j-p8tH`j(t4=2S@B+-RhAXn.RS&K79.WH*\@P>+]b3_iHlA/)+_.:'8Tl?#jk!WN%B]U)HkPIsMM#+sp\4R]Dp2J&43j@c>;4O:iZO+mFeImg<k;s?7JkqIDkddL3*lh`mfUF9</QZ=MB)F8MrCt/)/%Bm/Y6C)[>:cY>4_RNY!W^p8Uqd*JgaY[cO"n?PRd-uS")MYON23S+WIc5qpb2I0/+tetX+.`%Zj"Wb<c2%^eZ\6L.oVLCYTFU-c'q/^3<^$I4V@^C!ScNDQB2LpX9u17oB<h^Ip.mP3O1V(>h"Dean`WtF]"91Nr4Obi:Hk#d`Re<\"pNY3937!`:2p$sPD>`0Sf[;b\mclqYK/IL\S&I]Mh?!7[Ih/BPDT=71&Ngo4F!c/[G;2eI#\cuGl#u^1E*r^%a2O'[&@"Le&IY&3<fH++.0pd6_^67>K5o#8i0MGRF&/\$6jROciY'S]W6fi)4\jI*Cbj*D]5Wa1+B$=WM>9PYBXI'11:V[qfqgQ8Y1^-Bpc^/^f0!QdP*>hA%:nW[3m`^$=e*qWt:+;T?e="Bbf,<@n/"kE`T;3Ze7jpRl<jNs&<!IkN&muB,5>Dopqk[&<D%V4!t6-'.Zi,bW,];\e<f`Wn>RT?+OdY-^SX[>31ofOV(-jYI,RmTZU0^&'*/-GPT0tX)8kNfAI?=#\^+I+,u0m`plP@<3#J),P/cllRUq3V;-gX-cuDi>IQd&OsXb8Ln^h<<kcDi=Zog0,^A91WLFdC-P/e^B_$l!F.X33<2Ruoi2-RUYsIKtmP$,\`5!YrYY"=?@#e1dG0`?7j\5Y_H9UFU1`u`[#_.:5lt.lsg,#hg$&YRjXQLi?qZ5[WKIm,8l[%#`+_SM*MKLA/Q]+*.`<0#EQ5n.$JcX4P]kOA'0N#M%6K;KrJf$S.PX:]XE$A!kV[]5BmkO^D3/,8S28>=9?:kWP=qoUrNooasgTFR0Z)Z`7!r=5_#9e:&T@EEa6sIZ7$*8CU_fV)C?EAN)GAU57e`/3165kMdjfCW0f_5RYYF;GV_f-^EGJ;1N7t;=i#8/B069>N=Ge^aS]"kt)gt,?Um'Y^iDm(ktag/dhbbC#MKZ_!.qfk(a;0RO'Mh>AN[82u[lN)j%pqgP!WHcO]#AZq2:`b^BGaYK+<u+".B]/rm/?R$D-#Ejh6jU!0#jBQE/AKh<c'.l*1+V[//[/"jLsj<gIsXI[j^A<a9VLBg@a(%!%<Hc$&[k/@Jur>T=+#?_7n&6gFu+[R3]r!/a&B5#Q.],sn]7S@^JXf8*]d3Zej[m`(4^"+/*u@<pTJg?csioY>'!hYH20LaVHSaTb$WG=T5.%=c!NRbGkJe^nHh?3]U'/<+,9KT4[7E=_s*Xu%qk@sj`P]B(Ta.$gpg;]r4;9'dTU-B)YaN8&nL!KNI]epHo&T2lAM1n_US\i:bA!"b:apohn*=&a)CU,^[,a#W!.N0*&KN+$o"p.V&*RuN4WcjmeN-N"$k[;J&j3Ir!uGn#&=~>endstream
 endobj
-32 0 obj
+39 0 obj
 <<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 2624
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2532
 >>
 stream
-Gatm<>>s9K&q9"FoV;-p<cmm)O`8EN2^spJ;u='^QH&V$8Y\'d@D'@(^RgR(&\u0tTgG!+eCUn=mT)_!INnMJ/VlSDkgNO";+ul_7AF6YMm%653!j3WE'C%)2OhY60a7/.)GfMfo?0]sj+p07.VLp_"h6SOs5e?L&k!'+Tcfb^VW!2[$(:HXX'tE1KYa`iJE*T9"nIh4('P.bm]7hUF?3ZTZF[#intD49'saor[1VYo2#j5f03\;D]7a])9;5!*-gj.kpIS0,FIKuk30k>i&VTaQ'Z%s@RDr`])6o[[f'6ojWe?(T\r%q/S/2k4@;r8f(e-$Lo#=3nU<I;G[o@;,NjdA,8iIA@B0BaRi9.@2agc!1,H]?E(pd[^A]tKeSjL.tdE@j)i3TRFFKUNo>=kh+CY6(3<*n$SiJt8,doAa+@*52J_dTO"WIV8@Xb3'.5`:UI;,q/'\X+0q7r9a>YA<=-aE-!+[C!?<8m%"lFP/Z;i&=9=Fn`R0J[aT@\Bs.rQ_JR+B26*d:H*FHeAhVN$7GercD)ha!k0D8j#Ot5RWE(6:+5HLbnD#8#aqL=+"*bGFF\-@\kL-r=q@V['YbSN5ms?aM`Kf'#eKTRH-r`BN]p:oT>7<*#_[U@QuI*D::8L1-,#Z>-kf7ajua](@:ZC];Pl*[e[Z3.H!2-Vgaht7H7G!+`>LsMD02?OTXVCsPUY@UJ@`u]9-1)D2)+QE_m%m5:ugtgCK(baM[YYH>/;@`)LHC'WY@I!gjGk`e-N6(<<BE8_;F5Ig;r"j?N[l9<\/;lY+_W5`K#KBHTYR^CYbuHg7XZ+6A8Zr("4'rXBr^RdMRBHH7kX9=/eGB*mGM>IU'UQ*(j*EZ)We8_iDMl*EEl;XtMn'Ch2f!#Y-`'(BNK#N[-B'08pNTh1qP#*-"8IkE83Mb!7;:]%)b'Zn[<gIG&5]DBK2[&O-*!"Ng(Cg*TOjbQ@Vi$[p?^Z&PV0!W)GK.\j<sFXikY!El8+QD?7h*2gYt,WZja+'#MR3J\m('t_f^Ku)"7kk\VS'qRCFJn4jX.,b)7CEl7K'F7ZF;c0[5cXC%5,[_tLQkCAE1`%17OaYN-D3d(;C'c"B2]`d;CFuta"68fDB=D6N.20*SZR^IqECB&J+X-0Y5f"mC6/A9KlBSu*nTcdoAJCt6-_RS^Z"!FZ;r7&Ohg0M"\mlV=Su]6Zrs8/*&Ji>qF9@/fN!JN)hnEALNi%/l4CcJ]IV_XI(/o+S^\mEoldu(XdMY?=d?W#[@[#95MoBo*Kj'bE,5i&cctBo;kj-9:kt=7sf.0bMGrc@d-k>D`#1dWa)\o"LZ*L=n?(9[(m%>=d"!H0fNik=2\V.`J!%2UINV5Qi8jhlXB2$qr_<UO%0r5D8XmlakRbj<UMnZX^=nt"FHt%ch[/[)kM&Ccr41MO#[4?sN=DbQQG'hoG9QCVE/gX#,4IUXoLUt=;GUN6nVJF#p3"F_&i:bDHKb;1_$/Q!o&!;E9d+Ofr%-R;M-hPG;qRERWn#3DHXZQ^](L$5/'7kCE/nIIOhH99.dqA2if!ssrRECF^h)l-cpOF9=j3]DuR*s0$ZG4&_U(HqeN&kecM62U_[\?T+5/nA<9`a];Sm8%=Ek>UKmZSONs"u!/*oe%470@9_lG'W_;8K?$F+e^%4r<]<=6n*]eG-@+k65o(-iX*+ZFgC`R'pl9M!#@N=C)((MUtpRR`r?A>]lslCttWQec%C^]2MsWVis]!Ll:[PCl^o,o&K!*P!iuCcYnAuq!eh2^M*rNpBFpNm:pMh99B7H0S?8B*dqhp=q/;V[4"sF)&egt0oagaf*n#$kBI!cc@60\nOR0Y0PE%L]p4tu2O\d\W,hqg#(G8<bW=s_D-E3MHF%"`._q(U+3/`'\-"M\A=3m4+5U[ZGAtCis5NtR?J,tX=+N(X-DXSiSub>?$1H6n6*8D##BH`tMo/P'AWB%fh4bo)2i?jAa87Gn[8<'$9PpUi9TSa1RT(FQJpYeI^q>F=*9^f3P;0k6q4hp.XOOgiHKO/us0s*((SrbGcpoi]!L;mZ2tODu+&UTSghVV#-T0W3+\0)$I^A)UHp;.`Al><YRJ0V_TDeEHB]dtH*08"(+?5hd%hVJTnSC7WF&B[gOaiY%Rq<6]@'4(^6E$%RMe?pAb3'=^<k8=fDONW8>:'].kCmn+!M^:6].Q(?S.k[enpK8+#Z!gJkR97\\*+"f<A;mIf!QJXrd',)fkQPLocJ6sKot2NpHWWPc1fMBXp.qlTlsdoE,f!]#@.XFM:$U0lW4)Mn6X3gG6,o.[T7ZKnq#DKp+&c@$t`V)pYCj^.n6%56BH$)0l1$CXHgZ`4'/^!Q#$"7W:3g.FlMWa36bbeYQgl'2FkNm7'l)7be+`=B@kX8q&BaeJaE]<`1fl9<DXE1/t&bFBMUeGSU-n3(@iIeFuY\Rik2Z>&LT'gY_%tZ>-4#"H#JH#?8p@\j7FaHa6cq"p388.YApO(D5"m0ROe;0!`&tBNJs`f,*c7R)6'Lf<I\B<#$eNP`t]Z[:F<Mi(r,][c52\FTT(Aq>@7EZUCU;LE&Q^'K5sg`EJed.o-VAuNrb.>&Fe]+BEYTZ;Hos@f_.:NcE;rD+gS?O%6Sb'5GFfJ/H~>endstream
+Gatm<9m>@#'&EFdbgN]8@RTM)=uuXRrLS)#`9QTa)i0/8e0Mg2TOmfJ^H2EE3OLFd4cW;N)A"WUR6,W\.&A)9ddV0]'7F-4LT?ZfN#!p9a2s\a2fuSi8kpbOq'dVfVpfH?Tk'akPNeUOI6,e58SL;\RO7'7K$>bE<mf`#P)f;J-)9^L2OmZ#-+cA+/Bi`t@<1'>^iJ0)K(DG\/S[>\]luf$fkdnhi(Vl6jC9F:WhoCkDaf+.m=/g>-S9fCk6[nD4@uIL3SBUWrH7bNc>5DUQ#O"@`^V_RO4+fP9LlF*Jm5+"bus4P\dR&E&,gI4;*#&nR.;8Xmo0J2BI-X.>3STAJkE?m?cjs;Um712&j@+-SGA&7miBR!A@-FAH`Ot6E\_'E+\P1O?IA(fe+'/sUpQJ(/%dFS[[J,n*$.OK;)TdTSThG<^1:"gDlr,:+Po#Ci=a=7<M"ZO-DTg`EIMcdh:J.#F^A6MX0te"3uq[TZEiT`q6WIH;AW6o>>hk293U<G@AgC$6(-;$Gk8i'Luug<0695mBJ[^5K%4`*07"Uc.?aJSMthl/qqIRj2m&,_4qJt8,FcsgSp;c$V50s#P!\X*)OrgPc-^A,,b)n<S`*N^cSu]h*1i,P$niXlM`R;fBTU%\7-^,6@5qt.1[-U//aH#@Di0+;rZm5^%`N-(GQos3Hkl2KlF#%kI7J(fU-Os@NGrf:a-9EK5A)mF^1R-1!?cSc!R?5g/u)J07VeFhK@eF7E6mikS4-r8_@r,gTQ`jZkcLg6_"I-`Op^;3(I0$AiBje_q8d.?=,U7Y9aRPfNE)q4n@$cI9Sa()V6m1EQasX)9XXAGWriNu&44M,.la41ji"H&HB#h38o+h'I__jsj]knF)jenhG+TcOlXKC<G(IMoCMUQr.f3@'h[&BM+kVG5Md8L?]==@gmCK+)Xh8CfXTg'0%bLG$RR$<85WN/aJQMn"rE4l)%6#)?;lLbtiXR.8a1d(cD#Q(!ndQ9OaR%+;h1Cqu4unf8Q^&:*r/`i;)>n??/X[>F&1BC?e.65/bV!!g>>Oef=frIs)ps03S#jj:B:k=,rLu(C4o!_FD9eHHeI"jsdd:L_/?Lf'a3mFqV^n<KmoAOp'aQ,kGO('638X's+.ELL=89_m>\;IZWckOBd57d>,g=A4g_V'3X!NH(]9FguCcJdrc2mg$l2qP&:GoIY3ZQ.5m@t1h'FG)5%aEdSmd5_tie0oQXBu#piM]!QFE[EC3`l[,Xc4C+#rZu0/pX83q3O6N@dGZ+WH6]ZJXMNm":ute8Zl@1go;Y_M,`K/^,R!j:W_5jnu!TJ89^sH?3(D7#>oLA+S5D%qWM93jP1)%00hk6b;8]M^]"*+H>sK9ZdB<5q<1=R\\%k5^[%AYk8[W,e&9%Gbj-1B*Kp@U67"R5N>C5LCICiK<J(]g>LnekmUA?s->>AnL^,B%qlDo<RWs@uCYf9di3VL>a?,F?NRmCYK_'q>$2(FF#$l"MpU(a*7rN)Y/1ceLBIIm:\AoHp$HYr7fCBA"(Xj$3l2``#Vsd%A[oG`g&F1Nn`>UD>,S0)<]r6L!EtsEXL$$[`\A4E8dPRp)*KjPiLMfC4JhD635d\6^<rF%DN`p0Nb0OOh5Y88</P(VSh/VG9%+3boO$IkM(@"7P3NRipPUjQeRLE0omVq?/B[+g.NGKh[)e1UkO]a_Z=\_q.*VdK=lFH+28<7%:SGmH?q1,VeaNj'dT_L2>rcqmV9h#fM7(k`'@q]GmbtgI+nnL'Dm8j%^?VO<Dh'tYV<mu?/MPkoG3pd^Qd'!njV.!L%qSK$^SA$oUNFtBO4IuDU+.E+V01BE*38nia=k=rQ9N@^3q,O0,\<G9#Q=s(qIG?)D(iiFRmTsd+-t[bHl4Etg]iG[H-d588)g47<G]h;;,Ds'o`#poE())adQ[ge9eYtn'49[9agE^lN9X=lF`6f8>&i^OY`:N2-,qWn>Gdd'mXFBRPN.A^RL[`KS17a'Mi8]@_;R)!nfm/;F<#H;2e5_FaS/.)7NT[2&2eLFQ3.Apu1sQmgi[RbnTLRBI5]h>crRHY_,LH0U4<TGhW@I#=#bt5nC&+Tn0cSBo)[X8nfo%Lal]pq-7#cFH&[3UH<kj:r<\0M>>(O]/I6Ys*Zt(lKR;ijn6oUD+;Ej>%_c]$kVP+O5,X[k%<4'O+@l?<ia[YdL%^c!d#SZW!./ol?$BPDq("nG(VjbT00E+&T&:9IMl,OZO[fGQ\-!*;Z4ikHlOrN7gL5gH!X`;$*>Jle\GjsUF15K;/6l9]r>o_6&DgP$nT_:CLjC*YP@b<t")>h#!!@6+Xl$GeWm$_*kL_hgqD@61VDWsIQ230d0O]@&2Wu;rig3r>EbS8L)[=00Y':^2FmGE8m>sn.V&o6/n!EjNE"^RnL$V79o"f$U_*g2HiJHCRZ5o[UT91E9d=+[G7$)0jWHMMH;8)C]ek9@@VMZ#%Zh!dQ2EOq,V;7'c#[G@oiaBZ8h9h040c.#Vg;TfU]<i[h@e8Iq3Zg.YK@MAc40-1!5[<;DM~>endstream
 endobj
 xref
-0 33
+0 40
 0000000000 65535 f 
 0000000061 00000 n 
-0000000112 00000 n 
-0000000219 00000 n 
-0000000405 00000 n 
-0000000517 00000 n 
-0000000622 00000 n 
-0000000838 00000 n 
-0000001081 00000 n 
-0000001312 00000 n 
-0000001555 00000 n 
-0000001796 00000 n 
-0000002041 00000 n 
-0000002280 00000 n 
-0000002516 00000 n 
-0000002750 00000 n 
-0000002981 00000 n 
-0000003210 00000 n 
-0000003510 00000 n 
-0000003697 00000 n 
-0000003940 00000 n 
-0000004174 00000 n 
-0000004422 00000 n 
-0000004657 00000 n 
-0000004892 00000 n 
-0000005126 00000 n 
-0000005357 00000 n 
-0000005593 00000 n 
-0000005874 00000 n 
-0000005944 00000 n 
-0000006253 00000 n 
-0000006321 00000 n 
-0000009153 00000 n 
+0000000123 00000 n 
+0000000230 00000 n 
+0000000416 00000 n 
+0000000528 00000 n 
+0000000633 00000 n 
+0000000849 00000 n 
+0000001107 00000 n 
+0000001335 00000 n 
+0000001574 00000 n 
+0000001652 00000 n 
+0000001911 00000 n 
+0000002161 00000 n 
+0000002432 00000 n 
+0000002694 00000 n 
+0000002925 00000 n 
+0000003172 00000 n 
+0000003404 00000 n 
+0000003646 00000 n 
+0000003875 00000 n 
+0000004189 00000 n 
+0000004376 00000 n 
+0000004619 00000 n 
+0000004861 00000 n 
+0000005096 00000 n 
+0000005336 00000 n 
+0000005571 00000 n 
+0000005821 00000 n 
+0000006062 00000 n 
+0000006298 00000 n 
+0000006531 00000 n 
+0000006760 00000 n 
+0000006991 00000 n 
+0000007219 00000 n 
+0000007531 00000 n 
+0000007601 00000 n 
+0000007910 00000 n 
+0000007978 00000 n 
+0000010550 00000 n 
 trailer
 <<
 /ID 
-[<d1e08c18162891ceb8bbe6cad279cd6e><d1e08c18162891ceb8bbe6cad279cd6e>]
+[<d328a9af213c8d0f796db93bc74d0349><d328a9af213c8d0f796db93bc74d0349>]
 % ReportLab generated PDF document -- digest (opensource)
 
-/Info 29 0 R
-/Root 28 0 R
-/Size 33
+/Info 36 0 R
+/Root 35 0 R
+/Size 40
 >>
 startxref
-11869
+13174
 %%EOF

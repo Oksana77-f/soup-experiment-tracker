@@ -1,0 +1,60 @@
+2026-11-11T21:48:44Z
+soup-criterion-two-20261111214836-app-1 CPU=1.24% memory=100.7MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=2.34% memory=35.88MiB / 5.786GiB
+2026-11-11T21:48:49Z
+soup-criterion-two-20261111214836-app-1 CPU=1.49% memory=100.8MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=0.06% memory=36.13MiB / 5.786GiB
+2026-11-11T21:48:54Z
+soup-criterion-two-20261111214836-app-1 CPU=1.59% memory=100.8MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=2.91% memory=36.1MiB / 5.786GiB
+2026-11-11T21:49:00Z
+soup-criterion-two-20261111214836-app-1 CPU=8.06% memory=100.8MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=2.24% memory=37.86MiB / 5.786GiB
+2026-11-11T21:49:05Z
+soup-criterion-two-20261111214836-app-1 CPU=1.24% memory=100.8MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=0.02% memory=36.11MiB / 5.786GiB
+2026-11-11T21:49:10Z
+soup-criterion-two-20261111214836-app-1 CPU=1.40% memory=100.8MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=0.04% memory=36.14MiB / 5.786GiB
+2026-11-11T21:49:14Z
+soup-criterion-two-20261111214836-app-1 CPU=7.95% memory=100.8MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=0.03% memory=36.14MiB / 5.786GiB
+2026-11-11T21:49:20Z
+soup-criterion-two-20261111214836-app-1 CPU=7.41% memory=100.8MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=2.50% memory=36.18MiB / 5.786GiB
+2026-11-11T21:49:25Z
+soup-criterion-two-20261111214836-app-1 CPU=6.67% memory=103MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=0.02% memory=36.25MiB / 5.786GiB
+2026-11-11T21:49:31Z
+soup-criterion-two-20261111214836-app-1 CPU=65.05% memory=120MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=36.66% memory=102.3MiB / 5.786GiB
+2026-11-11T21:49:36Z
+soup-criterion-two-20261111214836-app-1 CPU=66.64% memory=120.1MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=33.44% memory=105.1MiB / 5.786GiB
+2026-11-11T21:49:42Z
+soup-criterion-two-20261111214836-app-1 CPU=76.37% memory=120.3MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=40.22% memory=105.8MiB / 5.786GiB
+2026-11-11T21:49:46Z
+soup-criterion-two-20261111214836-app-1 CPU=81.46% memory=120.6MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=40.59% memory=106.8MiB / 5.786GiB
+2026-11-11T21:49:51Z
+soup-criterion-two-20261111214836-app-1 CPU=78.35% memory=120.8MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=36.68% memory=108.9MiB / 5.786GiB
+2026-11-11T21:49:57Z
+soup-criterion-two-20261111214836-app-1 CPU=80.80% memory=121MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=33.75% memory=111.8MiB / 5.786GiB
+2026-11-11T21:50:02Z
+soup-criterion-two-20261111214836-app-1 CPU=85.18% memory=121.1MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=42.40% memory=117.2MiB / 5.786GiB
+2026-11-11T21:50:08Z
+soup-criterion-two-20261111214836-app-1 CPU=75.16% memory=121.3MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=42.66% memory=120.2MiB / 5.786GiB
+2026-11-11T21:50:13Z
+soup-criterion-two-20261111214836-app-1 CPU=70.45% memory=121.7MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=40.72% memory=120.8MiB / 5.786GiB
+2026-11-11T21:50:18Z
+soup-criterion-two-20261111214836-app-1 CPU=68.65% memory=121.6MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=39.46% memory=121.6MiB / 5.786GiB
+2026-11-11T21:50:23Z
+soup-criterion-two-20261111214836-app-1 CPU=79.10% memory=121.7MiB / 5.786GiB
+soup-criterion-two-20261111214836-db-1 CPU=39.78% memory=122.5MiB / 5.786GiB

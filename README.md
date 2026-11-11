@@ -11,6 +11,8 @@ docker compose exec app python -m tracker.cli demo
 
 Open [localhost:8000](http://127.0.0.1:8000). Sign in with one project's `read_key` and open its training run. Run the sender using that project's `write_key` and `run_id` from the CLI output.
 
+If port 8000 is already in use, run `TRACKER_PORT=18060 docker compose up -d --build --wait` and open [localhost:18060](http://127.0.0.1:18060). This changes the browser address while the sender in the app container still uses port 8000.
+
 ```sh
 read -rsp "Write key: " SOUP_WRITE_KEY; echo; export SOUP_WRITE_KEY
 docker compose exec -e SOUP_WRITE_KEY app python -m tracker.send RUN_ID
@@ -81,9 +83,9 @@ docker compose --profile test run --rm -e TRACKER_TEST_MUTATION=no-run-lock test
   python -m pytest -q tests/test_api.py::test_concurrent_batches_share_one_point
 ```
 
-The last two commands should fail. They change behavior only inside their test fixtures. The test service uses a separate `soup_tests` database. The browser checks compare actual DOM rows, stored data and input. The deterministic network test closes an HTTP SSE response from the server, then holds the next request while it writes new points. A separate variant returns one `502`. The slow-client test stalls an ASGI send of a data frame.
+The last two commands should fail. They change behavior only inside their test fixtures. The test service uses a separate `soup_tests` database. The browser checks compare actual DOM rows, stored data and input. The deterministic network test closes an HTTP SSE response from the server, then holds the next request while it writes new points. A separate variant returns one `502`. The slow-client tests stall ASGI sends of data, heartbeat and final body and verify replay afterward.
 
-The [fresh-clone check](evidence/fresh-clone-compose.txt) records the browser demo. The [clean build and full Compose run](evidence/nocache-check.txt) records 18 passing tests on newly built images, including the writer process kill before and after commit and rotation at the default idle poll interval.
+The [fresh-clone check](evidence/fresh-clone-compose.txt) records the browser demo. The [earlier `--no-cache` run](evidence/nocache-check.txt) passed 18 tests on freshly built images. The [integrated check](evidence/criteria-final.txt) passed 29 tests with the current app build and the prior test dependency image. It includes a non-reading Linux loopback TCP client, copied-cookie revocation after logout and replay through multiple pages.
 
 Run the benchmark on a local instance with a disposable demo database. It creates a separate benchmark project for every invocation.
 

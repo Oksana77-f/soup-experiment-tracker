@@ -1,0 +1,235 @@
+4233880686f54c54bfc75e62e64c5e78930eb46a
+bbbb54c2b6d3741b4090d13f9046f1dedb27b6cc
+c3f359dadca091c07086a8604c1af6d97f7f7c84
+88391400024200d6f2742c79a41c19c8c47e3dc4
+dcb7c26466e6437f47cc71d60fa0e600bb849722
+#1 [internal] load local bake definitions
+#1 reading from stdin 452B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 816B 0.1s done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/python:3.11-slim
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/node:22-alpine
+#4 DONE 0.0s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 32B
+#5 transferring context: 134B 0.1s done
+#5 DONE 0.1s
+
+#6 [runtime 1/6] FROM docker.io/library/python:3.11-slim
+#6 DONE 0.0s
+
+#7 [ui 1/6] FROM docker.io/library/node:22-alpine
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 transferring context: 896B 0.2s done
+#8 DONE 0.2s
+
+#9 [ui 3/6] COPY frontend/package.json frontend/package-lock.json ./
+#9 CACHED
+
+#10 [ui 5/6] COPY frontend/ ./
+#10 CACHED
+
+#11 [ui 6/6] RUN npm run build
+#11 CACHED
+
+#12 [runtime 2/6] WORKDIR /app
+#12 CACHED
+
+#13 [runtime 5/6] COPY tracker ./tracker
+#13 CACHED
+
+#14 [ui 4/6] RUN npm ci
+#14 CACHED
+
+#15 [runtime 3/6] COPY requirements.txt .
+#15 CACHED
+
+#16 [runtime 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#16 CACHED
+
+#17 [ui 2/6] WORKDIR /build
+#17 CACHED
+
+#18 [runtime 6/6] COPY --from=ui /build/dist ./frontend/dist
+#18 CACHED
+
+#19 exporting to image
+#19 exporting layers done
+#19 writing image sha256:ad52a8d95d361b2fa75235436b1904b6e2fb4ef834707981242a0c9fe94478bc done
+#19 naming to docker.io/library/soup-criteria-integrated-app done
+#19 DONE 0.0s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+ app  Built
+ Container soup-criteria-integrated-app-1  Recreate
+ Container soup-criteria-integrated-app-1  Recreated
+ Container soup-criteria-integrated-db-1  Starting
+ Container soup-criteria-integrated-db-1  Started
+ Container soup-criteria-integrated-db-1  Waiting
+ Container soup-criteria-integrated-db-1  Healthy
+ Container soup-criteria-integrated-app-1  Starting
+ Container soup-criteria-integrated-app-1  Started
+ Container soup-criteria-integrated-app-1  Waiting
+ Container soup-criteria-integrated-db-1  Waiting
+ Container soup-criteria-integrated-db-1  Healthy
+ Container soup-criteria-integrated-app-1  Healthy
+ soup-criteria-integrated-app-1 copy soup-criteria-integrated-app-1:/app/frontend/dist/. to /mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/criteria-ui.vD8cBp Copying
+ soup-criteria-integrated-app-1 copy soup-criteria-integrated-app-1:/app/frontend/dist/. to /mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/criteria-ui.vD8cBp Copied
+Test dependency image: sha256:ec3c469b33c898139a52a5dfc417a172d4da84674028cdc2bbc31ddb4d0d76e9
+Using newly built UI and current tracker/tests as read-only mounts in the prior test dependency image.
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.0.2, pluggy-1.7.0 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /app
+configfile: pytest.ini
+testpaths: tests
+plugins: asyncio-1.3.0, anyio-4.16.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 29 items
+
+tests/test_api.py::test_batches_retry_overlap_conflict_and_scope PASSED
+tests/test_api.py::test_batch_write_timings_measure_separate_phases PASSED
+tests/test_api.py::test_post_timing_log_preserves_batch_outcomes[disabled] PASSED
+tests/test_api.py::test_post_timing_log_preserves_batch_outcomes[enabled] PASSED
+tests/test_api.py::test_batch_input_limits_reject_without_side_effects PASSED
+tests/test_api.py::test_invalid_sse_cursor_is_rejected_before_opening_stream PASSED
+tests/test_api.py::test_failure_after_insert_rolls_back_receipt_points_and_cursor PASSED
+tests/test_api.py::test_project_isolation_and_csrf PASSED
+tests/test_api.py::test_logout_revokes_captured_session_and_open_stream PASSED
+tests/test_api.py::test_logout_revokes_legacy_cookie PASSED
+tests/test_api.py::test_concurrent_batches_share_one_point PASSED
+tests/test_api.py::test_rotation_stops_open_stream_and_old_keys Rotation commit to observed SSE EOF: 0.936 s (idle poll 1 s)
+PASSED
+tests/test_api.py::test_sender_keeps_exact_body_on_retry_and_stops_on_409 PASSED
+tests/test_crash.py::test_writer_killed_at_commit_boundary[before-commit] Writer exited with -9 before COMMIT; HTTP response lost. Points before/after retry: 0/2.
+PASSED
+tests/test_crash.py::test_writer_killed_at_commit_boundary[after-commit-before-response] Writer exited with -9 after COMMIT; HTTP response lost. Points before/after retry: 2/2.
+PASSED
+tests/test_replay_boundaries.py::test_reconnect_drains_multiple_pages_then_receives_live_point PASSED
+tests/test_sse_diagnostics.py::test_histogram_returns_upper_bounds_and_handles_overflow PASSED
+tests/test_sse_diagnostics.py::test_sse_page_timing_preserves_result_and_error PASSED
+tests/test_sse_diagnostics.py::test_sse_send_timing_excludes_ping_and_non_stream_routes PASSED
+tests/test_stream.py::test_browser_matches_input_and_database_after_disconnect[native-reconnect] PASSED
+tests/test_stream.py::test_browser_matches_input_and_database_after_disconnect[closed-after-502] PASSED
+tests/test_stream.py::test_same_browser_does_not_reuse_previous_project_data Chromium history navigation: {'restored': False, 'reasons': ['masked', 'response-cache-control-no-store', 'response-cache-control-no-store-with-js-network-request']}
+PASSED
+tests/test_stream.py::test_logout_clears_run_and_list_in_other_tabs PASSED
+tests/test_stream.py::test_snapshot_cursor_replays_multiple_pages_before_first_subscription PASSED
+ERROR:    ASGI callable returned without completing response.
+tests/test_stream.py::test_browser_recovers_across_application_restart PASSED
+tests/test_stream.py::test_stalled_send_times_out_and_allows_replay[data] PASSED
+tests/test_stream.py::test_stalled_send_times_out_and_allows_replay[heartbeat] PASSED
+tests/test_stream.py::test_stalled_send_times_out_and_allows_replay[final] PASSED
+ERROR:    Exception in ASGI application
+  + Exception Group Traceback (most recent call last):
+  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 410, in run_asgi
+  |     result = await app(  # type: ignore[func-returns-value]
+  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+  |     return await self.app(scope, receive, send)
+  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1160, in __call__
+  |     await super().__call__(scope, receive, send)
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 96, in __call__
+  |     await self.middleware_stack(scope, receive, send)
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+  |     raise exc
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+  |     await self.app(scope, receive, _send)
+  |   File "/app/tracker/app.py", line 47, in __call__
+  |     await self.app(scope, receive, no_store)
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+  |     await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+  |     raise exc
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+  |     await app(scope, receive, sender)
+  |   File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+  |     await self.app(scope, receive, send)
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 683, in __call__
+  |     await self.middleware_stack(scope, receive, send)
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 704, in app
+  |     await route.handle(scope, receive, send)
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 289, in handle
+  |     await self.app(scope, receive, send)
+  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 130, in app
+  |     await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+  |     raise exc
+  |   File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+  |     await app(scope, receive, sender)
+  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 117, in app
+  |     await response(scope, receive, send)
+  |   File "/app/tests/test_tcp_backpressure.py", line 32, in __call__
+  |     await super().__call__(scope, receive, observe_send)
+  |   File "/app/tracker/sse.py", line 35, in __call__
+  |     await super().__call__(scope, receive, send_with_timeout)
+  |   File "/usr/local/lib/python3.11/site-packages/sse_starlette/sse.py", line 416, in __call__
+  |     async with anyio.create_task_group() as task_group:
+  |   File "/usr/local/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 871, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/app/tracker/sse.py", line 30, in send_with_timeout
+    |     await send(message)
+    |   File "/app/tests/test_tcp_backpressure.py", line 27, in observe_send
+    |     await send(message)
+    |   File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    |     await send(message)
+    |   File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 39, in sender
+    |     await send(message)
+    |   File "/app/tracker/app.py", line 45, in no_store
+    |     await send(message)
+    |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 161, in _send
+    |     await send(message)
+    |   File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 458, in send
+    |     await self.flow.drain()  # pragma: full coverage
+    |     ^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/flow_control.py", line 19, in drain
+    |     await self._is_writable_event.wait()  # pragma: full coverage
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/usr/local/lib/python3.11/asyncio/locks.py", line 213, in wait
+    |     await fut
+    | asyncio.exceptions.CancelledError
+    | 
+    | The above exception was the direct cause of the following exception:
+    | 
+    | Traceback (most recent call last):
+    |   File "/app/tracker/sse.py", line 29, in send_with_timeout
+    |     async with timeout(self._frame_timeout):
+    |   File "/usr/local/lib/python3.11/asyncio/timeouts.py", line 115, in __aexit__
+    |     raise TimeoutError from exc_val
+    | TimeoutError
+    | 
+    | The above exception was the direct cause of the following exception:
+    | 
+    | Traceback (most recent call last):
+    |   File "/usr/local/lib/python3.11/site-packages/anyio/_core/_tasks.py", line 327, in _run_coro
+    |     retval = await self._coro
+    |              ^^^^^^^^^^^^^^^^
+    |   File "/usr/local/lib/python3.11/site-packages/sse_starlette/sse.py", line 419, in cancel_on_finish
+    |     await coro()
+    |   File "/usr/local/lib/python3.11/site-packages/sse_starlette/sse.py", line 317, in _stream_response
+    |     await send(
+    |   File "/app/tracker/sse.py", line 32, in send_with_timeout
+    |     raise SendTimeoutError() from exc
+    | sse_starlette.sse.SendTimeoutError
+    +------------------------------------
+tests/test_tcp_backpressure.py::test_nonreading_loopback_client_times_out_and_can_replay PASSED
+
+============================= 29 passed in 34.55s ==============================
+ Container soup-criteria-integrated-app-1  Stopping
+ Container soup-criteria-integrated-app-1  Stopped
+ Container soup-criteria-integrated-db-1  Stopping
+ Container soup-criteria-integrated-db-1  Stopped

@@ -1,0 +1,33 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.0.2, pluggy-1.7.0 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /app
+configfile: pytest.ini
+testpaths: tests
+plugins: asyncio-1.3.0, anyio-4.16.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 21 items
+
+tests/test_api.py::test_batches_retry_overlap_conflict_and_scope PASSED  [  4%]
+tests/test_api.py::test_batch_write_timings_measure_separate_phases PASSED [  9%]
+tests/test_api.py::test_post_timing_log_preserves_batch_outcomes[disabled] PASSED [ 14%]
+tests/test_api.py::test_post_timing_log_preserves_batch_outcomes[enabled] PASSED [ 19%]
+tests/test_api.py::test_batch_input_limits_reject_without_side_effects PASSED [ 23%]
+tests/test_api.py::test_invalid_sse_cursor_is_rejected_before_opening_stream PASSED [ 28%]
+tests/test_api.py::test_failure_after_insert_rolls_back_receipt_points_and_cursor PASSED [ 33%]
+tests/test_api.py::test_project_isolation_and_csrf PASSED                [ 38%]
+tests/test_api.py::test_concurrent_batches_share_one_point PASSED        [ 42%]
+tests/test_api.py::test_rotation_stops_open_stream_and_old_keys PASSED   [ 47%]
+tests/test_api.py::test_sender_keeps_exact_body_on_retry_and_stops_on_409 PASSED [ 52%]
+tests/test_crash.py::test_writer_killed_at_commit_boundary[before-commit] PASSED [ 57%]
+tests/test_crash.py::test_writer_killed_at_commit_boundary[after-commit-before-response] PASSED [ 61%]
+tests/test_stream.py::test_browser_matches_input_and_database_after_disconnect[native-reconnect] PASSED [ 66%]
+tests/test_stream.py::test_browser_matches_input_and_database_after_disconnect[closed-after-502] PASSED [ 71%]
+tests/test_stream.py::test_same_browser_does_not_reuse_previous_project_data PASSED [ 76%]
+tests/test_stream.py::test_browser_recovers_across_application_restart PASSED [ 80%]
+tests/test_stream.py::test_stalled_send_times_out_and_allows_replay[data] PASSED [ 85%]
+tests/test_stream.py::test_stalled_send_times_out_and_allows_replay[heartbeat] PASSED [ 90%]
+tests/test_stream.py::test_stalled_send_times_out_and_allows_replay[final] PASSED [ 95%]
+tests/test_tcp_backpressure.py::test_nonreading_loopback_client_times_out_and_can_replay PASSED [100%]
+
+============================= 21 passed in 29.68s ==============================

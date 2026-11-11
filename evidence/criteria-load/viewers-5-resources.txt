@@ -1,0 +1,48 @@
+2026-11-11T21:25:33Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=6.82% memory=39.56MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=2.90% memory=33.96MiB / 5.786GiB
+2026-11-11T21:25:38Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=0.67% memory=39.56MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=0.02% memory=34.23MiB / 5.786GiB
+2026-11-11T21:25:44Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=0.92% memory=39.56MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=0.03% memory=34.25MiB / 5.786GiB
+2026-11-11T21:25:48Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=0.76% memory=39.57MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=3.02% memory=34.25MiB / 5.786GiB
+2026-11-11T21:25:53Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=61.61% memory=56.86MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=11.50% memory=40.8MiB / 5.786GiB
+2026-11-11T21:25:59Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=74.12% memory=57.1MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=29.26% memory=71.91MiB / 5.786GiB
+2026-11-11T21:26:04Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=61.09% memory=57.39MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=31.06% memory=72.75MiB / 5.786GiB
+2026-11-11T21:26:10Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=61.38% memory=57.84MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=36.98% memory=73.08MiB / 5.786GiB
+2026-11-11T21:26:15Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=82.25% memory=57.9MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=36.66% memory=76.66MiB / 5.786GiB
+2026-11-11T21:26:21Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=75.99% memory=58.1MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=32.89% memory=77.36MiB / 5.786GiB
+2026-11-11T21:26:27Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=68.53% memory=58.24MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=27.70% memory=78.02MiB / 5.786GiB
+2026-11-11T21:26:32Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=67.56% memory=58.38MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=28.37% memory=79.59MiB / 5.786GiB
+2026-11-11T21:26:37Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=67.73% memory=65.16MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=28.34% memory=81.44MiB / 5.786GiB
+2026-11-11T21:26:42Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=59.85% memory=58.38MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=31.16% memory=81.94MiB / 5.786GiB
+2026-11-11T21:26:47Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=65.89% memory=58.34MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=28.30% memory=82.45MiB / 5.786GiB
+2026-11-11T21:26:52Z
+soup-criterion-arch-20261111212345-5-app-1 CPU=60.70% memory=58.36MiB / 5.786GiB
+soup-criterion-arch-20261111212345-5-db-1 CPU=28.12% memory=83.73MiB / 5.786GiB

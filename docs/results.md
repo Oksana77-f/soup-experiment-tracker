@@ -1,6 +1,6 @@
 # Experiment tracker assessment
 
-**SHIP for the measured local profile with one observer per run. DON’T SHIP for five observers per run.** Steps 12 and 14 passed the minute with DOM p99 of 1.68 s and 1.61 s. Step 15 delivered every point but reached a DOM p99 of 2.65 s. The gate also requires zero losses or duplicates and a writer that sustains the schedule.
+**SHIP for the measured local profile with one observer per run. DON’T SHIP for five observers per run.** The integrated runtime measured DOM p99 of 1.525 s with one observer and 3.503 s with five. The two-worker diagnostic at five reached 2.216 s. The gate requires p99 below 2 s, zero losses or duplicates and a writer that sustains the schedule. Earlier runs are preserved below.
 
 ## Measured load
 
@@ -33,6 +33,27 @@ The first run overlapped a test suite and exceeded the write schedule. The separ
 
 To reproduce the counters, start a separate Compose database with `shared_preload_libraries=pg_stat_statements`, run `CREATE EXTENSION pg_stat_statements` in `soup`, and reset the counters before each `--seconds 30` workload. Read `calls` and `total_exec_time` for the query whose normalized SQL starts with `SELECT r.id, r.name, r.last_seq, page.points`.
 
+## Integrated runtime measurement
+
+Revision `92c13ae` includes session revocation and timeouts on every SSE send. The two workloads used identical app images, fresh databases, one Uvicorn worker, one control Chromium and real HTTP SSE for all remaining viewers. The 60 s workloads on the same WSL2 host used both timing flags. [Summary](../evidence/criteria-load/summary.json) · [One viewer](../evidence/criteria-load/viewers-1-driver.txt) · [Five viewers](../evidence/criteria-load/viewers-5-driver.txt)
+
+| Metric | One viewer per run | Five viewers per run |
+| --- | ---: | ---: |
+| Stored points / deliveries | 30,000 / 30,000 | 30,000 / 150,000 |
+| POST to DOM p99 | 1.525 s | 3.503 s |
+| Driver POST p99 | 597 ms | 2,083 ms |
+| App POST handler p99 | 164 ms | 240 ms |
+| App loop delay p99 upper bucket | 3 ms | 8 ms |
+| App page read p99 upper bucket | 12 ms | 48 ms |
+| ASGI data send p99 upper bucket | 0.2 ms | 0.2 ms |
+| App SSE page calls | 6,044 | 28,192 |
+| Driver schedule lag p99 | 110 ms | 2,147 ms |
+| Sampled peak app / DB CPU | 44.78% / 20.41% | 82.25% / 36.98% |
+
+Both workloads completed with zero losses, duplicates or mismatches. The single-viewer run recovered one transport retry. The five-viewer tail persisted beyond the first 50 completed writes, and warm write pool p99 increased from 0.078 ms to 42.1 ms. The ASGI send timing ends when the server accepts the frame and the read timing includes pool acquisition. Driver schedule lag precedes the end-to-end clock. These aggregated distributions show pressure on the app, pool and driver without decomposing a specific slow event. The first diagnostic change is to move the non-browser SSE consumers out of the timing driver and repeat the same 250 connections before changing polling or pooling. [One-viewer app timing](../evidence/criteria-load/viewers-1-app.txt) · [Five-viewer app timing](../evidence/criteria-load/viewers-5-app.txt)
+
+**Two-worker diagnostic.** The same image ran with two Uvicorn workers, a shared signing secret provisioned before startup and two independent DB pools. At five viewers, DOM p99 fell from 3.503 to 2.216 s. App handler p99 fell from 240 to 163 ms and warm write pool p99 from 42.1 to 0.095 ms. App memory peaked at 121.7 MiB against 65.16 MiB for one worker. The trial retained all 30,000 stored points and 150,000 deliveries. PostgreSQL connections reached 32, so the result reflects both workers and greater pool capacity. This single run remains above the latency gate. [Driver](../evidence/criteria-load/two-workers/viewers-5-driver.txt) · [Summary](../evidence/criteria-load/two-workers/viewers-5-summary.json) · [Environment and connections](../evidence/criteria-load/two-workers/viewers-5-environment.txt)
+
 ## Correctness and boundaries
 
 The original WSL pytest suite passed all 11 checks against PostgreSQL and Chromium. It compares input, database and DOM after a held reconnect and a separate `502`, checks project isolation and browser reuse, exercises batch conflicts and rollback, and checks rotation, restart and a stalled ASGI send of a data frame. Keepalive sends are outside that test. The app also passed a real Docker Compose restart smoke test. [Original pytest run](../evidence/pytest-final.txt) · [16 checks after POST timing](../evidence/pytest-step11.txt) · [Container restart](../evidence/compose-restart.txt)
@@ -44,6 +65,8 @@ The earlier 17-test Compose run killed a separate writer before commit. With the
 Both crash cases now go through a separate HTTP worker. `SIGKILL` before commit drops the connection and leaves zero points and no receipt. The exact retry writes two points. After commit, the same connection loss leaves two points and the original receipt. The retry returns that exact receipt and leaves the snapshot unchanged. [Crash tests](../tests/test_crash.py) · [18-test preflight](../evidence/post-commit-preflight.txt)
 
 The clean verification ran `docker compose --profile test build --no-cache app test` with an isolated Compose project and a new database. The app served the tracker UI and all 18 tests passed in 17.70 s on the newly built test image. The rotation test observed EOF in 0.948 s. Dependency downloads completed in this run. [Clean build and test output](../evidence/nocache-check.txt)
+
+The integrated verification used a current app build and mounted the current source, tests and built React UI read-only in the existing test dependency image. All 29 cases passed. New coverage includes copied-cookie revocation after restart, logout in other tabs, writes between snapshot and first subscription, replay across more than two production pages, and blocked data, heartbeat and final sends. A Linux loopback TCP socket with constrained buffers stopped reading and triggered the deadline. A new reading client then replayed all 2,048 events in order. Chromium reported that history traversal did not restore from BFCache. The raw test log retains the timeout traceback and an unlabelled incomplete-ASGI-response line. [Integrated output](../evidence/criteria-final.txt) · [Contract regressions before the fix](../evidence/contract-logout-red.txt) · [TCP regression](../evidence/tcp-regression.txt)
 
 The browser scenarios cover one engine and controlled HTTP disconnects. Database failover, long histories, fan-out above five observers per run, intermediate cache misconfiguration and timing side channels remain outside these measurements. Logs record error classes and SQLSTATE rather than request credentials or metric bodies. The demo sender keeps an outstanding batch in memory during retries. PostgreSQL and application-state volumes survive the app restart tested here.
 

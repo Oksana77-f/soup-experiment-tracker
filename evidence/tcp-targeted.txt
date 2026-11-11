@@ -1,0 +1,36 @@
+ Network soup-criterion-tcp_default  Creating
+ Network soup-criterion-tcp_default  Created
+ Volume "soup-criterion-tcp_tracker-data"  Creating
+ Volume "soup-criterion-tcp_tracker-data"  Created
+ Container soup-criterion-tcp-db-1  Creating
+ Container soup-criterion-tcp-db-1  Created
+ Container soup-criterion-tcp-db-1  Starting
+ Container soup-criterion-tcp-db-1  Started
+ Container soup-criterion-tcp-db-1  Waiting
+ Container soup-criterion-tcp-db-1  Healthy
+Loopback TCP verification run 
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.0.2, pluggy-1.7.0 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /app
+configfile: pytest.ini
+plugins: asyncio-1.3.0, anyio-4.16.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+tests/test_tcp_backpressure.py::test_nonreading_loopback_client_times_out_and_can_replay PASSED [100%]
+
+============================== 1 passed in 4.23s ===============================
+Loopback TCP verification run 
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.0.2, pluggy-1.7.0 -- /usr/local/bin/python
+cachedir: .pytest_cache
+rootdir: /app
+configfile: pytest.ini
+plugins: asyncio-1.3.0, anyio-4.16.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+tests/test_tcp_backpressure.py::test_nonreading_loopback_client_times_out_and_can_replay PASSED [100%]
+
+============================== 1 passed in 4.15s ===============================

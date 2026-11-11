@@ -70,11 +70,13 @@ async def api(settings):
 
 
 @asynccontextmanager
-async def live_server(app, port=0):
+async def live_server(app, port=0, *, send_buffer_size: int | None = None):
     # Each fixture server models a fresh process, including the SSE shutdown flag.
     AppStatus.should_exit = False
     sock = socket.socket()
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    if send_buffer_size is not None:
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, send_buffer_size)
     sock.bind(("127.0.0.1", port))
     port = sock.getsockname()[1]
     config = uvicorn.Config(app, access_log=False, log_level="warning",

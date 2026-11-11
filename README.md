@@ -1,6 +1,6 @@
 # Soup Experiment Tracker
 
-A small, project-scoped tracker for batched training metrics. The browser reads a PostgreSQL snapshot and receives committed metrics over SSE. See [the submission note](docs/submission.md), [the design](docs/design.md), [the working plan in Russian](docs/plan-ru.md) and [the AI-use log](docs/ai-usage-ru.md).
+A small, project-scoped tracker for batched training metrics. The browser reads a PostgreSQL snapshot and receives committed metrics over SSE. See [the submission note](docs/submission.md) ([PDF](docs/submission.pdf)), [the design](docs/design.md), [the working plan in Russian](docs/plan-ru.md) and [the AI-use log](docs/ai-usage-ru.md).
 
 ## Run the demo
 

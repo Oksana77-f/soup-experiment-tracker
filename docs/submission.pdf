@@ -1,0 +1,260 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document (opensource)
+1 0 obj
+<<
+/F1 2 0 R /F2 4 0 R /F3 6 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker)
+>> /Border [ 0 0 0 ] /Rect [ 51 28 197.547 41 ] /Subtype /Link /Type /Annot
+>>
+endobj
+4 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+5 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/results.md#measured-load)
+>> /Border [ 0 0 0 ] /Rect [ 377.823 691.7898 441.432 704.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+6 0 obj
+<<
+/BaseFont /Courier /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+>>
+endobj
+7 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/scripts/load.py)
+>> /Border [ 0 0 0 ] /Rect [ 110.5245 583.2898 163.0455 595.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+8 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/step14-summary.json)
+>> /Border [ 0 0 0 ] /Rect [ 461.844 528.7898 502.1115 541.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+9 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/step14-summary.json)
+>> /Border [ 0 0 0 ] /Rect [ 51 514.2898 94.1655 526.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+10 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/step15-summary.json)
+>> /Border [ 0 0 0 ] /Rect [ 100.0245 445.2898 199.7745 457.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+11 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/fanout-sql.txt)
+>> /Border [ 0 0 0 ] /Rect [ 115.197 376.2898 186.3975 388.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+12 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_stream.py)
+>> /Border [ 0 0 0 ] /Rect [ 367.857 242.2898 431.4555 254.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+13 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_api.py)
+>> /Border [ 0 0 0 ] /Rect [ 477.8415 187.7898 519.8625 200.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+14 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_stream.py)
+>> /Border [ 0 0 0 ] /Rect [ 51 173.2898 114.5985 185.8898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+15 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/design.md)
+>> /Border [ 0 0 0 ] /Rect [ 298.422 118.7898 371.376 131.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+16 0 obj
+<<
+/Annots [ 3 0 R 5 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R 13 0 R 14 0 R 
+  15 0 R ] /Contents 30 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 29 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+17 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker)
+>> /Border [ 0 0 0 ] /Rect [ 51 28 197.547 41 ] /Subtype /Link /Type /Annot
+>>
+endobj
+18 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/submission-checks.txt)
+>> /Border [ 0 0 0 ] /Rect [ 51 753.0773 167.718 767.5773 ] /Subtype /Link /Type /Annot
+>>
+endobj
+19 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/red-replay.txt)
+>> /Border [ 0 0 0 ] /Rect [ 172 667.7498 241.549 679.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+20 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/evidence/red-concurrent-write.txt)
+>> /Border [ 0 0 0 ] /Rect [ 441.563 614.7498 511.112 626.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+21 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_stream.py)
+>> /Border [ 0 0 0 ] /Rect [ 339.6839 561.7498 389.28 573.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+22 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_crash.py)
+>> /Border [ 0 0 0 ] /Rect [ 282.5315 508.7498 326.7344 520.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+23 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/tests/test_api.py)
+>> /Border [ 0 0 0 ] /Rect [ 465.3086 442.7498 519.7644 454.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+24 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/results.md)
+>> /Border [ 0 0 0 ] /Rect [ 221.4045 279.7898 268.665 292.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+25 0 obj
+<<
+/A <<
+/S /URI /Type /Action /URI (https://github.com/Oksana77-f/soup-experiment-tracker/blob/main/docs/ai-usage-ru.md)
+>> /Border [ 0 0 0 ] /Rect [ 219.0735 210.7898 266.3445 223.3898 ] /Subtype /Link /Type /Annot
+>>
+endobj
+26 0 obj
+<<
+/Annots [ 17 0 R 18 0 R 19 0 R 20 0 R 21 0 R 22 0 R 23 0 R 24 0 R 25 0 R ] /Contents 31 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 29 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 
+  /Trans <<
+
+>> /Type /Page
+>>
+endobj
+27 0 obj
+<<
+/PageMode /UseNone /Pages 29 0 R /Type /Catalog
+>>
+endobj
+28 0 obj
+<<
+/Author (\(anonymous\)) /CreationDate (D:20261111230112+05'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20261111230112+05'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (\(unspecified\)) /Title (Soup Experiment Tracker - Submission note) /Trapped /False
+>>
+endobj
+29 0 obj
+<<
+/Count 2 /Kids [ 16 0 R 26 0 R ] /Type /Pages
+>>
+endobj
+30 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2596
+>>
+stream
+Gatm<flGh:(4Fe9g_X&6;^@<U"Nbr\VMV1?826OTMlKZLTLlp#\rgkq'_D!=DIXit0oF"P'kII&ICF:D4fs6^qulFD.>^6ikhSZm5tJ$c"VYf@X"X*jFlprHraJXZHle'L.=$h*R)TO1qO]Q4dsrcD.VUr3G^(+t[t9oY?4cWkntL@ao4.?#1>B.\_SR2[]m45jO+Y^oS/2@9.d?lred<^8Zgm1KeP.oepQ[R\.9/O6NC[r`GtY2V[//D7';>Xm$0(rSi+Uf9B1I,WnJ!,iYb]2FcX0@t!)WsJ/=[p,JA[n"?3`it-@G$hMi^8tUBk.gcBn$^4qA^_WqDHk_K\PnAmOQMk$!nq[64$C=8Y2M.@r2QI!TINk"XMe$8Z7_liV8fAM7A5*j5H`Gtf5pW6QZR;V9"1PR<t;Jh!NSGp,?6P,j"Ti&P'l8YW45=1/koOX&;!EgOri_Esc')E"6<OJ>h((rK52OX3lbPWm*lmfe.W#H7EXc7>Hdg@i/7D_&(W*Ka/I$&\\$qg`kDg_O(h*duCXG4=7SYdNWno:Ansq42WbMLm%%jSORLs4HNfY;>"aPVuO(-_cpXUQ8U/7Mk*md6#N[/Jb],Q3&]LDF1l#`H+@6>JXHmIj)OCZ$/Ti'R.+AP4(g_0?*A`?Kt7'r&g/e2-Q=fXYOT:fh@kf7D)ct"DU$\4J["56n2pU8>H#X4`X%UgIQGc6!-O8MXZ0E&J^)YJb#a0Gn@MmN?-/kcVRl$;1T^cAD`a8U]](ki'ksZ3Y!553d;C4=6op[6)ihk!tD!+/4kt7ZkbM_\^o8=3hh<eF-$U]2Ld!`;7/5>k;R=O!PR.DSVtiAR7s(O\CueP*mqG$!*DndOed,`(F^.B$\rd&GBrk>6R:GAFn_1[\\Z#GX6%L?J?1.F-"t"s1'"mWX]osSM#GW[gT2a/A[)Gbcn:LhO97>o;[,nY8h#]fB=bcJ$Y&t")-uB!8Y</7DN-(rPI;MOTl(mZ)_3Ldbi_@J2Crq"eC(+'+7<OUAWjsPJa0,@Gq,Aq)?a\8EoEa*E`(nI3TuLeVq('Y7#6K5+45-)\Sog-b7&=X>>;<kH$A39F1B@t_e/K92"n[(MLQ7`622)^SoX)]TbjBH.pWiA2iORp&1Nbfa;.ZS*JT4k=]Y2:AS)ReXBcmpY8,CbRV6bVnqo=RRmRJ3\ujeRH@RR5)L&i0,YAS(p</"#V0=?BekM^,^O.]+0Q/,trCX5PX2okP0YjbK=D:?aX'd6$7"\F,>BmYq\@V'AM,9RIA3ln@&_KG=!&=2:Z!A*-E=%!UJh9pfCH-/"_)>jRbl1R=-^3ce7=F!Br,hT>(d)&cS!7<j%?T+7\m\](2^2Np\)XJ-UlWMm0QluC=Lob8*]@$P:*/J3Lmfi'1m3p,KjHkf46ifi<KH%t<T)-^Y,Dkgl#qd5Ke@N`J2^B]]&EVXqDWWj@*=*QRX&uS%<%c]]Lham*MfDFCD=_SEQc5Go0]u<MS/3GNCUaY[H4pH?lN]HB7;';W*;L\H!JpH0K):qAlSa=$8)m(O7--M+IZ#R1]W!m`J(s[Z?4OT\T2%4*=pC,TmP-0@]Ql<o7V,D-;YM8Rkn_W]\FF9r:LF9Ik)NYf]Pj^ng>)PjiJqEB682Yn`Dc-34jGD0%Vs/L<ktU13)^FBXgKjg[BJ&mW\u#"ad]$(lk!0lEFtVkr(V2_]<XF4bDj2JTHF"X4Sm(?NJjt4f.OjLZK=jE!ZTB6&9)G(`f)##LjqNYc)*K1miWlVVqdk)*J:Xi'j%R7Ge2u$TFuI9W7?bCA?NH>1`XD3Y$@B6UNY*E(1=p\BDLH8;,t/J`f2+70<^.\nT8L2^BeQ.>l'sXWRbXM(g'mUTZ<KXe65?bVHWYa"8n/ZJn2i!aC?J;m$?de>)bjTq/]YA)(%"^/]]J-odZdD@/j!N^doO.6ftQb;O.*?rXDghPmf6M]\iSU!51OO->tO9l>(sN`#_U!u(\\Ed3P$f+7dF=OfOuOR"c9Q9AIu:bSb.OS7$I:-7tZf#cEI5h[/PVq.630jaBE@58h"n7CDlZPA4\a#X>m_l"N;8M?u"3S2ZXLA.(Z)6.g,+Ngo==5RsRl]NVfGj:(1?lYhM:&;pUc2^(P.]sBqeh+`=$s+OTk+-Va%GJ?(Hs*J2*kZo1gr_jR)ZLbMd"t4E^ra2X0RN>mn\(*(fb=@egbTPJ,YDg<"R^1\7&P9tI5u\gCHLEe/c_i7]dB(3pRZ)n5jCgLQ)JXRXBX('7mk^M[e%W!OiF>pZR[9hEo#CIF;?KpIf&sFDiJYCfc[N8hmb!$4hAFo"mta'CD?)'7@0VtAa&d(7-O(dNo513]-**\L=SE)1!G0MLd;M#1a`ilqo$t[I`)qbj6g[\Dc1oJY3Z+pk3oK,O6V.n6LKmcI3ehOJqEd<:6mE^PQ`QmmN27gO<!moRrh>uZu?\I&R]<''eW\s!k>F>I1!Z).AC+?T]tfqT`UZbY26?G]@,O(M>mWf6mCBVM%^(.$]*"]^#]E_f^hpjL>TAUJ*V1g^t7FDfjKZaT;(A^IDoT15Y<ZrK2D]L_=2UA3ZbIs(4:P92I@9k1]f:V`eUSVJb>sXFS7rKOoJA~>endstream
+endobj
+31 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2464
+>>
+stream
+Gatm<gN)%.&q0LUoV6TP@X-;ndBV_7D^FKjf%)rN,U=N;#n6l,epdRh#"aYH@_'-e]:;\?M8#O%\tOddr$LC[]Hm?`TF\L<,q1EHP`2=K/O%X]`C2U&a7C0;Ze6UpN[^Epa`oS=mseYC1eq^@VNSro;1tDPrhSf;,"aWiTdZChVX]>6$/+u?CLJ7m`6kYDJE<U""oDj;/P6r:5<;Yul#aH3i(Ug)b,;AKWg&bjH7SPVC&^JW+11h'k8gig4@pmU5&'Jj^FsnVVUGqs+gAVtN@:BZOp"W/fea]ob(R[&[U(?%<+W`,LYJ&V/4;5O(^:LC__G=$V/%S%M5m5.fot=7"7;qMP]%gp/pbfj_s_Z%`c766*-s&d-XT?&0+$f^g_O`Hr4/r;VJB+JNK`G"o42UNXo19OUMSF=5>S.1N,"EBlHbTYd@>W`3">DF7e;Rn.8hF*ouBK@Fug?uM1\<4>N:pH$)Ouu)j;=S?)[@.)YVFE31GT9(fleHmqD*\W2T9o([fgo,08.NbpJX@m!dXh>`Q2M3`_frJX*dF.[e%VeI[1q2L[bEQHgFZNJ3tGQbB63'u?QP7Vc/R_o!iOP\XP)g3)?kmo7CV%nun,1[OfS0I&.;Xn'o'..Gm?-j173@WO*V@&5?Hl/qsQQ,4cZN`62#"tG$ijD-7f^3u%*7QIa'W`m<[<f7&o.<]sI<6g1tZZf9UlYf@JKL/=PO!%K,i!3hPh[;S+oiA+uJ;n4-Pt^B0=0EpJP*A>:]N#5^YP]`3_hh:>h+^En5$,uLJa2X-*"h&h9VPuX@?md=+*LP%`W[)_8-'/MM`jqe]j[Gl[C*)mbI3jWK7-Q<d8Za(`c$la\iS06/0apC9=*[!fLK.I!.Fi;>AK*W%jpU7!Ek\0Nhj)&7MIcVrsPB.oCq81K8*4`>&j>-?T;;_J8TPYY40AT'Vpre6G\8SmB%'K:a!QfH;!*[TAu5m,iC"po[X!D_ka%bWm>g,p!Vr&/HLM9`cKR_f&F?hRX6)]4oBRqL%'\a7,/c/&B[HZ1312<$s^Xan.s9jXMVZ?O2jCf78]oh)mh.4.oq_+jIIt$6PD)!GGaBk2\u<[Aq(QH.u78g\F]'YB(&7XOShT`EfYllKk2U>3Xa*k9Tg`@-.>)&QNU>MA)"qRa'7'I2D9=n&q6q";Q^FGL!LiYZd,Jbp&141GDgY?kis;UWAM[+m9i?'EpF6eaDA.;SQ0:5[tg".X@=STNG)<'++TPtin,s1(&chn[s>+<UWGUJr*C33.$(kp?8,j7fD[_*+/Su^UX<tK;E%p8HAVbX5SmtnTQ4*4BZ0AMO+G-C$Jifj?eHC,2D;Eu!S2ju:.r-oXf`\S)XKIH>h#G\1TMbsX6V?s>kdhE5l%53$%3[4J>e)Qc!7hJR<NW@e,:l;Qo6>Afaf[-FW)9s//<8Z'hVIC_]5LpjP!uNk]>3V8a\J?D8dDR@\Ap`TkRR+7s51h=\^fOlTe*RU8!oRlcgrKo"FYU"bcg^Im;5KQ(i(gq_1+0dhtnS4?`9NT9d?/3pp%tnSpFSVX5j?*ESGM[u.5(FY[YIERCo-m8=p)^AU+cB;8&e'_Dg'P;FDg4]@"i:OCAH#L:(BBI@%Gc4^Cn<.IKFkU7;(-3O*BCTiI8\ee@!WIWEd"/#'*<89p.g`X+JF3B5[Kiu2S@R=3i^R*<JNF<cSeUgs)3pl:n!Y<XrS19sVe4F"c,92]'F)5cL%B/E$-Au;G?lNSs:E_F01bGlFp67%Vgu?!00Nq_5LsTOhdHK'l$X2+sSn*KDAij7_:23I!&UeJ.XGq8WfE:)CMbkG<'F*SmAPQa%I$-Bh8-lk*eZcubKGO^8iIPX@B"YIJLhER8n>Q[l(]MS]=O@];<-$W%;M-c*I_\[KfD:na%E-O?N!d*Qc4)eW?2!S1T>$BB\T<s,;b5^t&Rmrg5kLd)!eTZYq@Wp$;oVF$_`3P&fbC4O@fL%.rk"?L(l1idF0/]56<1*n4KM.Zr=5N&<L@UYVY5_sZVUoi05R#P)3l%b:!#EWRWL^%Y7NF849uj<=\cRB;FI,\Md.LCN\fj#W\Gn@cE1lr4"sm_\m[2qEdcOlK,Yg9<pIe^0-,"O3fsn5$=`ij\gRD+!-G_LEmH<<IG&m>&1!lmrg#ttcRghQ<(ZMh_Z?nWEFF/`Z*B@$fD>*3'NQ:WA[.LYBLji)Y`O,CPlA>>L2S[uo,2oKbDJ-J]nVra_W:!BC+"LdJnnck#pjS!Bm5;0j]5%*WfYrX7dVgtQj$6j#<WuF-4@e8CQ]2W.9+,tKcjB%X]1MThXJ^*DJ3k&j\bH.H`qZP>4K]QJA#cm`.sgIr'CH\,p82)jogi>S@oc=[QERKHjUcGC"m5M)PmBgm>^/uf8MQ&1h6q%g5'JQ"STUpC=:UQS=R1HJ1diS00tq0f*,K0%To5AGuU_%WR/ur9.`_<Z!Wn"YO7.D+f_dG#s<>"?a>(@Vu~>endstream
+endobj
+xref
+0 32
+0000000000 65535 f 
+0000000061 00000 n 
+0000000112 00000 n 
+0000000219 00000 n 
+0000000405 00000 n 
+0000000517 00000 n 
+0000000760 00000 n 
+0000000865 00000 n 
+0000001096 00000 n 
+0000001339 00000 n 
+0000001576 00000 n 
+0000001821 00000 n 
+0000002060 00000 n 
+0000002296 00000 n 
+0000002530 00000 n 
+0000002761 00000 n 
+0000002990 00000 n 
+0000003283 00000 n 
+0000003470 00000 n 
+0000003710 00000 n 
+0000003944 00000 n 
+0000004192 00000 n 
+0000004427 00000 n 
+0000004663 00000 n 
+0000004897 00000 n 
+0000005128 00000 n 
+0000005364 00000 n 
+0000005645 00000 n 
+0000005715 00000 n 
+0000006024 00000 n 
+0000006092 00000 n 
+0000008780 00000 n 
+trailer
+<<
+/ID 
+[<aa9d92557ee18462598399c7aba7e67a><aa9d92557ee18462598399c7aba7e67a>]
+% ReportLab generated PDF document -- digest (opensource)
+
+/Info 28 0 R
+/Root 27 0 R
+/Size 32
+>>
+startxref
+11336
+%%EOF

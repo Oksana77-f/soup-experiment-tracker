@@ -1,0 +1,54 @@
+ Container soup-tracker-step14-app-1  Recreate
+ Container soup-tracker-step14-app-1  Recreated
+ Container soup-tracker-step14-db-1  Starting
+ Container soup-tracker-step14-db-1  Started
+ Container soup-tracker-step14-db-1  Waiting
+ Container soup-tracker-step14-db-1  Healthy
+ Container soup-tracker-step14-app-1  Starting
+ Container soup-tracker-step14-app-1  Started
+ Container soup-tracker-step14-app-1  Waiting
+ Container soup-tracker-step14-db-1  Waiting
+ Container soup-tracker-step14-db-1  Healthy
+ Container soup-tracker-step14-app-1  Healthy
+App image: sha256:29404324ce8a4a7416add708c04d1d59f3389b5e4c94b15cfb56b5f26c04d2fa
+84cde2e33fd444d7cf9878c33623224b9732d3b2
+{"started_utc": "2026-11-11T19:16:11.470342+00:00", "runs": 50, "metrics_per_run_per_second": 10, "seconds": 30, "viewers_per_run": 1, "browser_viewers": 1, "http_sse_viewers": 49, "metrics_per_batch": 10, "schedule": "one synchronized batch per run per second", "driver_platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"}
+{"browser_version": "145.0.7632.6"}
+{"browser_sse_to_dom_samples": 300, "browser_sse_to_dom": {"p50_ms": 1.2, "p95_ms": 3.4, "p99_ms": 6.2}}
+{
+  "attempted_metrics": 15000,
+  "stored_metrics": 15000,
+  "database_mismatches": 0,
+  "subscriber_missing": 0,
+  "subscriber_duplicates": 0,
+  "subscriber_mismatches": 0,
+  "dom_samples": 300,
+  "write_window_s": 29.592,
+  "transport_retries": 0,
+  "post": {
+    "p50_ms": 334.79,
+    "p95_ms": 607.07,
+    "p99_ms": 914.77
+  },
+  "schedule_lag": {
+    "p50_ms": 57.14,
+    "p95_ms": 112.2,
+    "p99_ms": 130.7
+  },
+  "post_to_sse": {
+    "p50_ms": 816.63,
+    "p95_ms": 1112.64,
+    "p99_ms": 1650.17
+  },
+  "post_to_dom": {
+    "p50_ms": 649.59,
+    "p95_ms": 1100.17,
+    "p99_ms": 1568.88
+  },
+  "errors": [],
+  "verdict": "SHIP"
+}
+ Container soup-tracker-step14-app-1  Stopping
+ Container soup-tracker-step14-app-1  Stopped
+ Container soup-tracker-step14-db-1  Stopping
+ Container soup-tracker-step14-db-1  Stopped

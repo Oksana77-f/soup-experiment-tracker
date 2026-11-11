@@ -73,6 +73,7 @@ async def run_load(args):
     sent_at = {}
     read_at = {}
     dom_at = {}
+    browser_stage_ms = {}
     post_times = []
     schedule_lags = []
     retries = []
@@ -95,7 +96,29 @@ async def run_load(args):
         browser = await playwright.chromium.launch()
         print(json.dumps({"browser_version": browser.version}), flush=True)
         page = await browser.new_page()
-        await page.expose_function("reportVisibleMetric", lambda step: dom_at.setdefault(step, perf_counter()))
+
+        def report_visible_metric(step, sse_to_dom_ms=None):
+            dom_at.setdefault(step, perf_counter())
+            if sse_to_dom_ms is not None:
+                browser_stage_ms.setdefault(step, sse_to_dom_ms)
+
+        await page.expose_function("reportVisibleMetric", report_visible_metric)
+        if args.browser_stages:
+            await page.add_init_script("""(() => {
+                const dispatchedAt = new Map();
+                window.metricDispatchedAt = dispatchedAt;
+                const NativeEventSource = window.EventSource;
+                window.EventSource = class extends NativeEventSource {
+                    constructor(...args) {
+                        super(...args);
+                        this.addEventListener('metric', event => {
+                            const stamp = performance.now();
+                            const {step} = JSON.parse(event.data);
+                            if (!dispatchedAt.has(step)) dispatchedAt.set(step, stamp);
+                        });
+                    }
+                };
+            })()""")
         await page.goto(args.url + f"/view/{runs[0]}")
         await page.get_by_label("Project read key").fill(read)
         await page.get_by_role("button", name="Sign in").click()
@@ -107,7 +130,9 @@ async def run_load(args):
                     const step = Number(row.cells[0].textContent);
                     if (!seen.has(step)) {
                         seen.add(step);
-                        window.reportVisibleMetric(step);
+                        const dispatchedAt = window.metricDispatchedAt?.get(step);
+                        if (dispatchedAt === undefined) window.reportVisibleMetric(step);
+                        else window.reportVisibleMetric(step, performance.now() - dispatchedAt);
                     }
                 }
             }).observe(document.querySelector('main'), {childList: true, subtree: true});
@@ -208,6 +233,9 @@ async def run_load(args):
     passed = (not errors and not database_mismatches and not subscriber_mismatches
               and len(dom_at) == count and dom_latency.get("p99_ms", math.inf) < 2000
               and within_schedule)
+    if args.browser_stages:
+        print(json.dumps({"browser_sse_to_dom_samples": len(browser_stage_ms),
+                          "browser_sse_to_dom": latency(ms / 1000 for ms in browser_stage_ms.values())}), flush=True)
     print(json.dumps({"attempted_metrics": len(sent_at), "stored_metrics": sum(map(len, stored.values())),
                       "database_mismatches": database_mismatches, "subscriber_missing": subscriber_missing,
                       "subscriber_duplicates": subscriber_duplicates, "subscriber_mismatches": subscriber_mismatches,
@@ -223,6 +251,7 @@ def main():
     parser.add_argument("--url", default="http://127.0.0.1:8000")
     parser.add_argument("--seconds", type=int, default=60)
     parser.add_argument("--viewers", type=int, default=1)
+    parser.add_argument("--browser-stages", action="store_true", help="Measure paired SSE dispatch and DOM observer timestamps inside Chromium.")
     args = parser.parse_args()
     if args.seconds < 1 or args.viewers < 1:
         parser.error("seconds and viewers must be positive")

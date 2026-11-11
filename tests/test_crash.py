@@ -1,68 +1,83 @@
 import asyncio
-import hashlib
 import json
 import os
 import sys
 from pathlib import Path
-from uuid import UUID
 
+import httpx
+import pytest
+
+from conftest import auth, batch, live_server, login, point, query, seed
 from tracker import db
 from tracker.app import create_app
-from tracker.models import Batch
 
 
-async def hold_before_commit(project_id: UUID, run_id: UUID, payload: bytes) -> None:
-    app = create_app()
-    store = db._store_batch
+async def hold_writer(phase: str) -> None:
+    operation = "_store_batch" if phase == "before" else "save_batch"
+    write = getattr(db, operation)
 
-    async def hold(*args):
-        await store(*args)
-        print("Metrics, cursor and receipt written before COMMIT", flush=True)
+    async def hold(*args, **kwargs):
+        receipt = await write(*args, **kwargs)
+        print(json.dumps(receipt), flush=True)
         await asyncio.Event().wait()
 
-    # This child is the only process with the barrier in its write path.
-    db._store_batch = hold
-    async with app.router.lifespan_context(app):
-        await db.save_batch(app.state.pool, project_id, run_id, Batch.model_validate_json(payload),
-                            hashlib.sha256(payload).hexdigest())
+    # Only the child HTTP worker has the barrier. save_batch returns after COMMIT.
+    setattr(db, operation, hold)
+    async with live_server(create_app()) as url:
+        print(url, flush=True)
+        await asyncio.Event().wait()
 
 
-async def test_writer_killed_before_commit_leaves_no_partial_batch(api, settings):
-    from conftest import auth, batch, login, point, query, seed
-
+@pytest.mark.parametrize("phase", ["before", "after"], ids=["before-commit", "after-commit-before-response"])
+async def test_writer_killed_at_commit_boundary(api, settings, phase):
     _, client = api
     target = await seed(settings.database_url)
     payload = json.dumps(batch(point(1), point(2))).encode()
+    run_path = f"/runs/{target.run}"
+    post_options = {"content": payload, "headers": {**auth(target.write), "Content-Type": "application/json"}}
     script = Path(__file__).resolve()
     writer = await asyncio.create_subprocess_exec(
-        sys.executable, str(script), str(target.project), str(target.run),
-        stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE,
+        sys.executable, str(script), phase, stdout=asyncio.subprocess.PIPE,
         env={**os.environ, "DATABASE_URL": settings.database_url, "SESSION_SECRET": settings.session_secret,
              "PYTHONPATH": str(script.parents[1])},
     )
-    try:
-        writer.stdin.write(payload)
-        await writer.stdin.drain()
-        writer.stdin.close()
-        marker = await asyncio.wait_for(writer.stdout.readline(), timeout=15)
-        assert marker.rstrip() == b"Metrics, cursor and receipt written before COMMIT"
-    finally:
-        if writer.returncode is None:
-            writer.kill()
-        await asyncio.wait_for(writer.wait(), timeout=5)
+    pending = None
+    async with httpx.AsyncClient(timeout=15) as sender:
+        try:
+            url = (await asyncio.wait_for(writer.stdout.readline(), 15)).decode().strip()
+            assert url.startswith("http://127.0.0.1:")
+            pending = asyncio.create_task(sender.post(url + run_path + "/metrics", **post_options))
+            staged_receipt = json.loads(await asyncio.wait_for(writer.stdout.readline(), 10))
+            assert staged_receipt["inserted"] == staged_receipt["last_seq"] == 2
+        finally:
+            if writer.returncode is None:
+                writer.kill()
+            await asyncio.wait_for(writer.wait(), 5)
+            if pending is not None:
+                interrupted, = await asyncio.gather(pending, return_exceptions=True)
     assert writer.returncode != 0
+    assert isinstance(interrupted, httpx.RemoteProtocolError)
 
     await login(client, target)
-    run_path = f"/runs/{target.run}"
-    state = (await client.get(run_path)).json()
-    assert state["points"] == [] and state["last_seq"] == 0
-    assert await query(settings.database_url, "SELECT 1 FROM receipts WHERE run_id = %s", (target.run,)) == []
-    response = await client.post(run_path + "/metrics", content=payload,
-                                 headers={**auth(target.write), "Content-Type": "application/json"})
-    assert response.status_code == 200
-    assert response.json()["inserted"] == response.json()["last_seq"] == 2
-    print(f"Writer exited with {writer.returncode} before COMMIT. Snapshot and receipts empty. Retry inserted 2 points.")
+    before_retry = (await client.get(run_path)).json()
+    receipts = await query(settings.database_url, "SELECT acknowledgment FROM receipts WHERE run_id = %s",
+                           (target.run,))
+    if phase == "before":
+        assert before_retry["last_seq"] == 0 and before_retry["points"] == [] and receipts == []
+    else:
+        assert before_retry["last_seq"] == 2 and len(before_retry["points"]) == 2
+        assert receipts == [{"acknowledgment": staged_receipt}]
+
+    response = await client.post(run_path + "/metrics", **post_options)
+    assert response.status_code == 200 and response.json() == staged_receipt
+    after_retry = (await client.get(run_path)).json()
+    assert after_retry["last_seq"] == 2
+    assert [point["step"] for point in after_retry["points"]] == [1, 2]
+    if phase == "after":
+        assert after_retry == before_retry
+    print(f"Writer exited with {writer.returncode} {phase} COMMIT; HTTP response lost. "
+          f"Points before/after retry: {len(before_retry['points'])}/{len(after_retry['points'])}.")
 
 
 if __name__ == "__main__":
-    asyncio.run(hold_before_commit(UUID(sys.argv[1]), UUID(sys.argv[2]), sys.stdin.buffer.read()))
+    asyncio.run(hold_writer(sys.argv[1]))

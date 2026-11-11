@@ -1,18 +1,22 @@
 import asyncio
 import importlib
 import os
+from dataclasses import replace
 from urllib.parse import urlsplit
 
 import httpx
+import psycopg
 import pytest
 from playwright.async_api import Route, async_playwright, expect
+from psycopg.rows import dict_row
 from sse_starlette import JSONServerSentEvent
 from sse_starlette.sse import SendTimeoutError
 from starlette.datastructures import Headers
 
+from tracker.admin import rotate_key
 from tracker.app import create_app
 
-from conftest import batch, live_server, login, point, post, query, seed
+from conftest import batch, frames, live_server, login, point, post, query, seed
 
 app_module = importlib.import_module("tracker.app")
 
@@ -252,13 +256,27 @@ async def test_browser_recovers_across_application_restart(settings, browser):
             await page.close()
 
 
-async def test_stalled_send_times_out_without_holding_a_db_connection(api, settings):
+@pytest.mark.parametrize("stalled_frame", ["data", "heartbeat", "final"])
+async def test_stalled_send_times_out_and_allows_replay(api, settings, monkeypatch, stalled_frame):
     app, client = api
     target = await seed(settings.database_url)
     await login(client, target)
-    assert (await post(client, target, batch(point(1), point(2)))).status_code == 200
+    points = [point(1), point(2)] if stalled_frame == "data" else [point(1)]
+    assert (await post(client, target, batch(*points))).status_code == 200
+
+    if stalled_frame == "heartbeat":
+        response_type = app_module.EventSourceResponse
+
+        def frequent_heartbeats(content, **kwargs):
+            kwargs["ping"] = 0.01
+            return response_type(content, **kwargs)
+
+        monkeypatch.setattr(app_module, "EventSourceResponse", frequent_heartbeats)
+
     received_ids = []
     request_sent = False
+    send_blocked = False
+    read_target = target
 
     async def receive():
         nonlocal request_sent
@@ -268,12 +286,25 @@ async def test_stalled_send_times_out_without_holding_a_db_connection(api, setti
         await asyncio.Event().wait()
 
     async def send(message):
+        nonlocal send_blocked, read_target
+        if message["type"] != "http.response.body":
+            return
         body = message.get("body", b"")
         if b"id: 1" in body:
             received_ids.append(1)
-        if b"id: 2" in body:
+            if stalled_frame == "final":
+                async with await psycopg.AsyncConnection.connect(settings.database_url, row_factory=dict_row) as conn:
+                    read_key = await rotate_key(conn, target.project, "read")
+                read_target = replace(target, read=read_key)
+        if stalled_frame == "data" and b"id: 2" in body:
             stats = app.state.pool.get_stats()
             assert stats["pool_available"] == stats["pool_size"]
+            send_blocked = True
+        elif stalled_frame == "heartbeat" and body.startswith(b":") and received_ids:
+            send_blocked = True
+        elif stalled_frame == "final" and not message["more_body"]:
+            send_blocked = True
+        if send_blocked:
             await asyncio.Event().wait()
 
     path = f"/runs/{target.run}/events"
@@ -289,11 +320,12 @@ async def test_stalled_send_times_out_without_holding_a_db_connection(api, setti
         await asyncio.wait_for(app(scope, receive, send), 6)
     except* SendTimeoutError:
         timed_out = True
-    assert timed_out and received_ids == [1]
+    assert send_blocked and timed_out and received_ids == [1]
 
+    if stalled_frame != "data":
+        assert (await post(client, target, batch(point(2)))).status_code == 200
     async with live_server(create_app(settings)) as url:
         async with httpx.AsyncClient(base_url=url, timeout=3) as viewer:
-            await login(viewer, target)
-            from conftest import frames
+            await login(viewer, read_target)
             async with viewer.stream("GET", path + "?after=1") as response:
                 assert (await anext(frames(response)))["id"] == "2"

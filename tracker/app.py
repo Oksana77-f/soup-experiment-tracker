@@ -16,13 +16,14 @@ from psycopg import Error, OperationalError
 from psycopg.rows import dict_row
 from psycopg_pool import AsyncConnectionPool, PoolTimeout
 from pydantic import ValidationError
-from sse_starlette import EventSourceResponse, JSONServerSentEvent, ServerSentEvent
+from sse_starlette import JSONServerSentEvent, ServerSentEvent
 from starlette.datastructures import MutableHeaders
 
 from . import db
 from .auth import COOKIE, ReadSession, Sessions, api_key, browser_origin
 from .models import MAX_BODY_BYTES, MAX_INTEGER, Batch
 from .settings import Settings
+from .sse import EventSourceResponse
 
 log = logging.getLogger("tracker")
 timing_log = logging.getLogger("uvicorn.error.tracker.timing")

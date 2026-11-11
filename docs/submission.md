@@ -1,0 +1,18 @@
+# Soup Experiment Tracker · Submission note
+
+**SHIP for the measured local profile.** Fifty runs sent ten points per second each, with one viewer per run. Both one-minute checks stored and delivered all 30,000 points without duplicates. In the control Chromium page, p99 from the first POST attempt to a visible row was 1.68 s and 1.61 s against a 2 s threshold. **DON’T SHIP at five viewers per run.** All 150,000 expected deliveries arrived, and browser p99 reached 2.65 s. The other viewers used real HTTP SSE connections. [Baseline](../evidence/step14-load.txt) · [Five viewers](../evidence/step15-load.txt) · [Full report](results.md)
+
+**First change under higher fan-out.** Instrument the count and duration of live-read queries per run as viewer count increases. If duplicated reads account for a material share of the delay, share each live read among viewers of that run while retaining indexed PostgreSQL replay and per-viewer authorization. Repeat the same workload to check the effect.
+
+## What the tests establish
+
+The submission was checked from a fresh GitHub clone on Docker Compose. [Browser demo and full test output](../evidence/fresh-clone-compose.txt)
+
+- **Consistency and recovery.** Chromium receives an event twice, then loses the SSE connection. The writer retries a batch containing late, out-of-order points while the viewer is offline. On reconnect, the final DOM matches the original input and PostgreSQL. A second variant returns `502` on reconnect. A replay mutation intentionally fails the comparison. A separate test covers application restart. [Browser tests](../tests/test_stream.py) · [Replay control](../evidence/red-replay.txt)
+- **Project isolation.** Project A cannot list, read, write or subscribe to project B’s runs. Unknown and foreign run IDs return the same error body on read and stream requests. Protected responses use `Cache-Control: no-store`. Chromium checks a previous project’s URL after switching accounts, including navigation through browser history. The database error handler returns a generic response and logs the error class and SQLSTATE, omitting credentials and metric payloads. [API tests](../tests/test_api.py) · [Browser tests](../tests/test_stream.py)
+- **Partial writes and concurrent retries.** An injected failure after insertion rolls back the points and cursor and leaves no receipt. Two concurrent batches sharing a point both succeed. Removing the run lock causes one to fail with a uniqueness violation. [API tests](../tests/test_api.py) · [Lock control](../evidence/red-concurrent-write.txt)
+- **Slow clients and rotation.** The server reads bounded pages and releases the database connection before sending. A stalled data-frame send times out and a fresh connection resumes. Rotation rejects old read and write keys and closes an existing stream on its next authorization check. A page already fetched can be in flight. [Browser tests](../tests/test_stream.py) · [API tests](../tests/test_api.py)
+
+**Limits.** These checks use Chromium, controlled HTTP interruptions and a stalled ASGI data send. They leave actual TCP backpressure, keepalive writes, restoration from the browser’s in-memory page cache, misconfigured shared caches, and timing side channels unmeasured.
+
+**Unexpected result and remaining concern.** An SSE library shutdown flag leaked between test fixtures and closed later streams immediately. Resetting that flag in the fixture restored the browser tests. The early load failures are preserved. Higher fan-out still pushes browser latency above the threshold, even when every point arrives. [Earlier runs](results.md) · [AI-use log](ai-usage-ru.md)

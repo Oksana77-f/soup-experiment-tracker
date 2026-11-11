@@ -1,0 +1,144 @@
+8ef8f0f73d1f2403033b65b555cf73f00e458c01
+#1 [internal] load local bake definitions
+#1 reading from stdin 501B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 816B 0.1s done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/node:22-alpine
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/python:3.11-slim
+#4 DONE 0.0s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 134B 0.1s done
+#5 DONE 0.1s
+
+#6 [ui 1/6] FROM docker.io/library/node:22-alpine
+#6 DONE 0.0s
+
+#7 [runtime 1/6] FROM docker.io/library/python:3.11-slim
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 transferring context: 78.29kB 0.2s done
+#8 DONE 0.2s
+
+#9 [runtime 3/6] COPY requirements.txt .
+#9 CACHED
+
+#10 [runtime 2/6] WORKDIR /app
+#10 CACHED
+
+#11 [runtime 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#11 CACHED
+
+#12 [ui 2/6] WORKDIR /build
+#12 CACHED
+
+#13 [runtime 5/6] COPY tracker ./tracker
+#13 DONE 0.1s
+
+#14 [ui 3/6] COPY frontend/package.json frontend/package-lock.json ./
+#14 DONE 0.1s
+
+#15 [ui 4/6] RUN npm ci
+#15 3.417 
+#15 3.417 added 21 packages, and audited 22 packages in 3s
+#15 3.417 
+#15 3.417 5 packages are looking for funding
+#15 3.417   run `npm fund` for details
+#15 3.418 
+#15 3.418 found 0 vulnerabilities
+#15 3.419 npm notice
+#15 3.419 npm notice New major version of npm available! 10.9.7 -> 12.2.2
+#15 3.419 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+#15 3.419 npm notice To update run: npm install -g npm@12.2.2
+#15 3.419 npm notice
+#15 DONE 3.5s
+
+#16 [ui 5/6] COPY frontend/ ./
+#16 DONE 0.1s
+
+#17 [ui 6/6] RUN npm run build
+#17 0.462 
+#17 0.462 > soup-experiment-tracker@1.0.0 build
+#17 0.462 > tsc --noEmit && vite build
+#17 0.462 
+#17 2.339 vite v7.3.8 building client environment for production...
+#17 2.439 transforming...
+#17 3.383 ✓ 30 modules transformed.
+#17 3.522 rendering chunks...
+#17 3.531 computing gzip size...
+#17 3.544 dist/index.html                   0.46 kB │ gzip:  0.29 kB
+#17 3.544 dist/assets/index-CsfbB--s.css    2.09 kB │ gzip:  0.98 kB
+#17 3.544 dist/assets/index-CteCUOC7.js   199.10 kB │ gzip: 62.86 kB
+#17 3.545 ✓ built in 1.16s
+#17 DONE 3.6s
+
+#18 [runtime 6/6] COPY --from=ui /build/dist ./frontend/dist
+#18 DONE 0.1s
+
+#19 exporting to image
+#19 exporting layers 0.0s done
+#19 writing image sha256:4cdcef6a6289f587e012444aa566f254d364cb636cd7d04b28a3d83d114521fc done
+#19 naming to docker.io/library/soup-submission-check-app done
+#19 DONE 0.1s
+
+#20 resolving provenance for metadata file
+#20 DONE 0.0s
+ app  Built
+ Network soup-submission-check_default  Creating
+ Network soup-submission-check_default  Created
+ Volume "soup-submission-check_tracker-data"  Creating
+ Volume "soup-submission-check_tracker-data"  Created
+ Volume "soup-submission-check_tracker-state"  Creating
+ Volume "soup-submission-check_tracker-state"  Created
+ Container soup-submission-check-db-1  Creating
+ Container soup-submission-check-db-1  Created
+ Container soup-submission-check-app-1  Creating
+ Container soup-submission-check-app-1  Created
+ Container soup-submission-check-db-1  Starting
+ Container soup-submission-check-db-1  Started
+ Container soup-submission-check-db-1  Waiting
+ Container soup-submission-check-db-1  Healthy
+ Container soup-submission-check-app-1  Starting
+ Container soup-submission-check-app-1  Started
+ Container soup-submission-check-db-1  Waiting
+ Container soup-submission-check-app-1  Waiting
+ Container soup-submission-check-db-1  Healthy
+ Container soup-submission-check-app-1  Healthy
+Traceback (most recent call last):
+  File "/mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/smoke-soup-fresh.py", line 40, in <module>
+    main()
+  File "/mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/smoke-soup-fresh.py", line 15, in main
+    browser = playwright.chromium.launch()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/soup-linux-venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 14566, in launch
+    self._sync(
+  File "/mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/soup-linux-venv/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/soup-linux-venv/lib/python3.12/site-packages/playwright/_impl/_browser_type.py", line 97, in launch
+    await self._channel.send(
+  File "/mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/soup-linux-venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/c/Users/Оксана/Documents/Codex/2026-11-10/new-chat/work/soup-linux-venv/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/oksana/.cache/ms-playwright/chromium_headless_shell-1208/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
+ Container soup-submission-check-app-1  Stopping
+ Container soup-submission-check-app-1  Stopped
+ Container soup-submission-check-db-1  Stopping
+ Container soup-submission-check-db-1  Stopped

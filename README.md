@@ -1,6 +1,6 @@
 # Soup Experiment Tracker
 
-A small, project-scoped tracker for batched training metrics. The browser reads a PostgreSQL snapshot and receives committed metrics over SSE. See [the design](docs/design.md), [the working plan in Russian](docs/plan-ru.md) and [the AI-use log](docs/ai-usage-ru.md).
+A small, project-scoped tracker for batched training metrics. The browser reads a PostgreSQL snapshot and receives committed metrics over SSE. See [the submission note](docs/submission.md), [the design](docs/design.md), [the working plan in Russian](docs/plan-ru.md) and [the AI-use log](docs/ai-usage-ru.md).
 
 ## Run the demo
 
@@ -62,6 +62,8 @@ docker compose --profile test run --rm -e TRACKER_TEST_MUTATION=no-run-lock test
 ```
 
 The last two commands should fail. They change behavior only inside their test fixtures. The test service uses a separate `soup_tests` database. The browser checks compare actual DOM rows, stored data and input. The deterministic network test closes an HTTP SSE response from the server, then holds the next request while it writes new points. A separate variant returns one `502`. The slow-client test stalls an ASGI send of a data frame.
+
+The [fresh-clone check](evidence/fresh-clone-compose.txt) records the browser demo and the full Compose test run.
 
 Run the benchmark on a local instance with a disposable demo database. It creates a separate benchmark project for every invocation.
 

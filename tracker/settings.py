@@ -14,6 +14,7 @@ class Settings:
     send_timeout: float = 3
     page_size: int = 100
     log_post_timings: bool = False
+    log_sse_diagnostics: bool = False
 
     @classmethod
     def from_env(cls):
@@ -33,4 +34,5 @@ class Settings:
             database_url=os.environ["DATABASE_URL"],
             session_secret=secret,
             log_post_timings=os.environ.get("SOUP_LOG_POST_TIMINGS") == "1",
+            log_sse_diagnostics=os.environ.get("SOUP_LOG_SSE_DIAGNOSTICS") == "1",
         )

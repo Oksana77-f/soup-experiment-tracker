@@ -53,6 +53,24 @@ docker compose logs --no-log-prefix app | grep post_metrics_timing
 
 The flag defaults to off. When reporting a load run, record whether it was enabled because writing logs adds work. Timing records contain only the outcome and durations.
 
+## Inspect SSE timings
+
+Set `SOUP_LOG_SSE_DIAGNOSTICS=1` for a local load run. Stop the app after the driver finishes and read its `sse_diagnostics` log. Start a fresh app process for each profile so the counters cover one run.
+
+```sh
+SOUP_LOG_SSE_DIAGNOSTICS=1 docker compose up -d --build --wait app
+# Run the benchmark below.
+docker compose stop app
+docker compose logs --no-log-prefix app | grep sse_diagnostics
+```
+
+- `loop_delay` samples the event loop's wake-up delay on a 20 ms timer.
+- `page_read` covers the SSE page query, including pool acquisition, authorization and result decoding. Counts include initial reads, polling and replay.
+- `data_send` covers the ASGI send await for metric frames. It includes server backpressure and ends at the ASGI server boundary.
+
+The log reports sample counts, fixed-bucket percentile upper bounds and maximums in milliseconds. It includes app startup and stream drain. A failed or cancelled read or send contributes its elapsed time. The flag defaults to off and the log contains no credentials or metric payloads.
+
+
 ## Verify
 
 ```sh

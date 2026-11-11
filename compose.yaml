@@ -21,6 +21,7 @@ services:
       DATABASE_URL: postgresql://soup:local-compose-only@db:5432/soup
       SESSION_SECRET_FILE: /state/session-secret
       SOUP_LOG_POST_TIMINGS: "${SOUP_LOG_POST_TIMINGS:-0}"
+      SOUP_LOG_SSE_DIAGNOSTICS: "${SOUP_LOG_SSE_DIAGNOSTICS:-0}"
     volumes:
       - tracker-state:/state
     ports:

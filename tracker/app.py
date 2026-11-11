@@ -2,7 +2,7 @@ import asyncio
 import hashlib
 import json
 import logging
-from contextlib import asynccontextmanager
+from contextlib import asynccontextmanager, nullcontext
 from dataclasses import asdict
 from datetime import UTC, datetime
 from time import perf_counter_ns
@@ -24,6 +24,7 @@ from .auth import COOKIE, ReadSession, Sessions, api_key, browser_origin
 from .models import MAX_BODY_BYTES, MAX_INTEGER, Batch
 from .settings import Settings
 from .sse import EventSourceResponse
+from .sse_diagnostics import SseDiagnostics, SseSendTiming
 
 log = logging.getLogger("tracker")
 timing_log = logging.getLogger("uvicorn.error.tracker.timing")
@@ -77,6 +78,8 @@ def create_app(settings=None):
     settings = settings or Settings.from_env()
     sessions = Sessions(settings)
     session_ends: WeakValueDictionary[str, asyncio.Event] = WeakValueDictionary()
+    diagnostics = SseDiagnostics() if settings.log_sse_diagnostics else None
+    read_sse_page = diagnostics.time_reads(db.run_page) if diagnostics is not None else db.run_page
     pool = AsyncConnectionPool(
         settings.database_url,
         kwargs={"row_factory": dict_row, "autocommit": True},
@@ -88,10 +91,13 @@ def create_app(settings=None):
         async with pool:
             await pool.wait(timeout=15)
             await db.initialize(pool)
-            yield
+            async with (diagnostics.monitor() if diagnostics is not None else nullcontext()):
+                yield
 
     app = FastAPI(title="Soup Experiment Tracker", lifespan=lifespan)
     app.add_middleware(PrivateResponses)
+    if diagnostics is not None:
+        app.add_middleware(SseSendTiming, timings=diagnostics.data_send)
     app.state.pool = pool
 
     @app.exception_handler(Error)
@@ -185,8 +191,8 @@ def create_app(settings=None):
         cursor = stream_cursor(request)
         session = read_session(request)
         ended = session_ends.setdefault(session.digest, asyncio.Event())
-        initial = checked_page(await db.run_page(pool, session.key_id, session.digest, run_id,
-                                                 cursor, settings.page_size))
+        initial = checked_page(await read_sse_page(pool, session.key_id, session.digest, run_id,
+                                                  cursor, settings.page_size))
         if ended.is_set():
             raise HTTPException(401, "Invalid session")
         if cursor > initial["last_seq"]:
@@ -212,8 +218,8 @@ def create_app(settings=None):
                     except TimeoutError:
                         pass
                 try:
-                    page = await db.run_page(pool, session.key_id, session.digest, run_id,
-                                             after, settings.page_size)
+                    page = await read_sse_page(pool, session.key_id, session.digest, run_id,
+                                               after, settings.page_size)
                 except (Error, PoolTimeout) as exc:
                     log.warning("Stream read interrupted (%s)", type(exc).__name__)
                     return
